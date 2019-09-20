@@ -15,7 +15,7 @@ public class ChurchController {
 
     @GetMapping("/")
     public String showAll(){
-        return "index";
+        return "hotels";
     }
 
 }
