@@ -28,7 +28,7 @@ public class UserRepositoryIntegrationTest {
     @MockBean
     private IUserRepository userRepository;
 
-    @Before
+    @Before //Arrange
     public void setUp(){
         User user1 = new User();
         user1.setName("Lia");

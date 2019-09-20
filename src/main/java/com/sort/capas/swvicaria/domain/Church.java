@@ -1,12 +1,15 @@
 package com.sort.capas.swvicaria.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "parish")
 @Data
+@AllArgsConstructor
 public class Church {
 
     @Id
@@ -25,5 +28,8 @@ public class Church {
 
     @Column(name = "p_picture")
     private String img;
+
+    @OneToMany(mappedBy = "church", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Group> groups;
 
 }
