@@ -19,23 +19,15 @@ public class Church {
     @Column(name = "p_id")
     private Long id;
 
-    @Setter
-    @Getter
     @Column(name = "p_name")
     private String name;
 
-    @Setter
-    @Getter
     @Column(name = "p_address")
     private String address;
 
-    @Setter
-    @Getter
     @Column(name = "p_history")
     private String history;
 
-    @Setter
-    @Getter
     @Column(name = "p_picture")
     private String img;
 
