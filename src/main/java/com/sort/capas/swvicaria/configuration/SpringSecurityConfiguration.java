@@ -1,4 +1,4 @@
-package com.sort.capas.swvicaria.configuration;
+/*package com.sort.capas.swvicaria.configuration;
 
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +35,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
         builder.inMemoryAuthentication()
                 .withUser(users.username("admin").password("12345").roles("ADMIN","USER"))
                 .withUser(users.username("maxisun").password("123456").roles("USER"))
-                ;
+        ;
 
     }
-}
+}*/
