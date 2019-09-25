@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface IChurchService {
     List<Church> findAll();
+    Church findChurchById(Long id);
+    Church save(Church church);
 }
