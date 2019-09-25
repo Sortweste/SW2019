@@ -14,11 +14,10 @@ import java.util.List;
 public class ControllerTest {
 
     @GetMapping("/")
-    public String showAll(Model model) {
+    public String showAllchurch(Model model) {
         /* Test */
         List<Church> list = new ArrayList<>();
-        Church church = new Church();
-        Church single = new Church();
+        Church church = new Church(null,null,null,null,null,null);
 
         //church
         church.setImg("/img/hotels/d1.jpg");
@@ -28,7 +27,7 @@ public class ControllerTest {
         list.add(church);
 
         //church
-        church = new Church();
+        church = new Church(null,null,null,null,null,null);
         church.setImg("/img/hotels/d2.jpg");
         church.setName("Mateo");
         church.setHistory("Otra historia muy larga por lo cual se contara luego");
@@ -36,7 +35,54 @@ public class ControllerTest {
         list.add(church);
 
         //church
-        church = new Church();
+        church = new Church(null,null,null,null,null,null);
+        church.setImg("/img/hotels/d3.jpg");
+        church.setName("Lucas");
+        church.setHistory("ya no se que mas poner jajaja ando sin inspiracion");
+        church.setAddress("Apopa");
+        list.add(church);
+
+        //church
+        church = new Church(null,null,null,null,null,null);
+        church.setImg("/img/hotels/d4.jpg");
+        church.setName("Apocalipsis");
+        church.setHistory("mueran pecadores jajajajaj XD");
+        church.setAddress("San Salvador");
+        list.add(church);
+
+        /* Test */
+
+
+        model.addAttribute("churchs",list);
+        return "hotels";
+    }
+
+
+
+    @GetMapping("/church")
+    public String showChurch(Model model) {
+        /* Test */
+        List<Church> list = new ArrayList<>();
+        Church church = new Church(null,null,null,null,null,null);
+        Church single = new Church(null,null,null,null,null,null);
+
+        //church
+        church.setImg("/img/hotels/d1.jpg");
+        church.setName("Judas");
+        church.setHistory("la historia es muy larga para que un mortal como yo la cuente");
+        church.setAddress("Santa Tecla");
+        list.add(church);
+
+        //church
+        church = new Church(null,null,null,null,null,null);
+        church.setImg("/img/hotels/d2.jpg");
+        church.setName("Mateo");
+        church.setHistory("Otra historia muy larga por lo cual se contara luego");
+        church.setAddress("San Salvador");
+        list.add(church);
+
+        //church
+        church = new Church(null,null,null,null,null,null);
         church.setImg("/img/hotels/d3.jpg");
         church.setName("Lucas");
         church.setHistory("ya no se que mas poner jajaja ando sin inspiracion");
