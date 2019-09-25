@@ -1,9 +1,6 @@
 package com.sort.capas.swvicaria.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
@@ -16,6 +13,7 @@ import java.util.List;
 @Table(name = "churchs")
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Valid
 public class Church {
 
