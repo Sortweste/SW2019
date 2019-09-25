@@ -13,6 +13,11 @@ import java.util.List;
 @RequestMapping("/Test")
 public class ControllerTest {
 
+    @GetMapping("/form")
+    public String formTest(){
+        return "churchform" ;
+    }
+
     @GetMapping("/")
     public String showAllchurch(Model model) {
         /* Test */
