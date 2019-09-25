@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
-@Table(name = "parish")
+@Table(name = "churchs")
 @Data
 @AllArgsConstructor
 @Valid
@@ -21,28 +21,28 @@ public class Church {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "p_id")
+    @Column(name = "c_id")
     private Long id;
 
     @NotNull
     @Size(min = 0, max = 100, message = "El nombre debe ser entre 0 y 100 caracteres")
     @Pattern(regexp = "[^1234567890]", message = "El nombre contiene numeros")
-    @Column(name = "p_name")
+    @Column(name = "c_name")
     private String name;
 
     @NotNull
     @Size(min = 0, max = 100, message = "El nombre debe ser entre 0 y 100 caracteres")
-    @Column(name = "p_address")
+    @Column(name = "c_address")
     private String address;
 
     @NotNull
     @Size(min = 0, max = 5000, message = "El nombre debe ser entre 0 y 5000 caracteres")
-    @Column(name = "p_history")
+    @Column(name = "c_history")
     private String history;
 
     @NotNull
     @Size(min = 0, max = 500, message = "El nombre debe ser entre 0 y 500 caracteres")
-    @Column(name = "p_picture")
+    @Column(name = "c_picture")
     private String img;
 
     @OneToMany(mappedBy = "church", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
