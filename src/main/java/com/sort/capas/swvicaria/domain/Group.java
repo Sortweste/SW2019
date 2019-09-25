@@ -29,7 +29,7 @@ public class Group {
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "t_id")
+    @JoinColumn(name = "c_id")
     private Church church;
 
 }
