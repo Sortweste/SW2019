@@ -25,23 +25,21 @@ public class Church {
     private Long id;
 
     @NotNull
-    @Size(min = 0, max = 100, message = "El nombre debe ser entre 0 y 100 caracteres")
-    @Pattern(regexp = "[^1234567890]", message = "El nombre contiene numeros")
+    @Size(min = 0, max = 100, message = "{nameChurch.size}")
+    @Pattern(regexp = "[^1234567890]", message = "{nameChurch.pattern}")
     @Column(name = "c_name")
     private String name;
 
     @NotNull
-    @Size(min = 0, max = 100, message = "El nombre debe ser entre 0 y 100 caracteres")
+    @Size(min = 0, max = 100, message = "{addressChurch.size}")
     @Column(name = "c_address")
     private String address;
 
     @NotNull
-    @Size(min = 0, max = 5000, message = "El nombre debe ser entre 0 y 5000 caracteres")
+    @Size(min = 0, max = 5000, message = "{historyChurch.size}")
     @Column(name = "c_history")
     private String history;
 
-    @NotNull
-    @Size(min = 0, max = 500, message = "El nombre debe ser entre 0 y 500 caracteres")
     @Column(name = "c_picture")
     private String img;
 

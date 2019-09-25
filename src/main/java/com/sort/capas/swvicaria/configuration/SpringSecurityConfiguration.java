@@ -37,5 +37,6 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .withUser(users.username("maxisun").password("123456").roles("USER"))
         ;
 
+
     }
 }*/
