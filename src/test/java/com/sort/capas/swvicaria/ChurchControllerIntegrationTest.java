@@ -12,8 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-//import static org.mockito.Mockito.when;
-
+import static org.mockito.Mockito.when;
 import static net.bytebuddy.matcher.ElementMatchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -32,16 +31,16 @@ public class ChurchControllerIntegrationTest {
 
     @Before
     public void SetUp(){
-
+        when(churchService.findAll()).thenReturn(null);
     }
 
     @Test
-    public void whenGetAllChurchs_thenReturnJSON() throws Exception {
+    public void whenGetAllChurchsFromService_thenReturnJSON() throws Exception {
         mockMvc.perform(
                 get("/Test/GetAllChurchs")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
-
+                //.andExpect(jsonPath("$[0].name").value(is()));
     }
 
 }
