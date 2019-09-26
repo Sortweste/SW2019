@@ -20,7 +20,7 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public User findUserByName(String name) {
-        return userRepository.findUserByName(name);
+        return userRepository.findByUsername(name);
     }
 
     @Override

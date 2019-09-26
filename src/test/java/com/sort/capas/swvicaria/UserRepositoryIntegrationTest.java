@@ -40,7 +40,7 @@ public class UserRepositoryIntegrationTest {
         userList.add(user1);
         userList.add(user2);
 
-        when(userRepository.findUserByName(user1.getName())).thenReturn(user1);
+        when(userRepository.findByUsername(user1.getName())).thenReturn(user1);
         when(userRepository.findUserById(user2.getId())).thenReturn(user2);
         when(userRepository.findAll()).thenReturn(userList);
 
