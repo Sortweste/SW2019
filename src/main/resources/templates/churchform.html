@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Add Church</title>
+    <title>Agregar Iglesia</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -11,13 +11,13 @@
 <body>
 
 <div class="container">
-<form action="@{/adminlogin}" object="${usuario}" method="post">
+<form th:action="@{/adminlogin}" th:object="${usuario}" method="post">
     <fieldset>
         <legend>Datos de la iglesia</legend>
         <table>
             <div class="form-group">
             <tr>
-                <td><label text="#{}" >Nombre de la iglesia: </label></td>
+                <td><label th:text="#{form.church.name}" >Nombre: </label></td>
                 <div class="col-sm-10">
                 <td><input type="text" field="*{name}" class="form-control" /></td>
                 </div>
@@ -27,7 +27,7 @@
 
             <div class="form-group">
             <tr>
-                <td><label text="#{}">Direccion de iglesia: </label></td>
+                <td><label th:text="#{form.church.address}">Direccion: </label></td>
                 <div class="col-sm-10">
                 <td><input type="text" field="*{address}" class="form-control" /></td>
                 </div>
@@ -36,7 +36,7 @@
 
             <div class="form-group">
             <tr>
-                <td><label text="#{}">Historia de la iglesia: </label></td>
+                <td><label th:text="#{form.church.history}">Historia: </label></td>
                 <div class="col-sm-10">
                 <td><input type="text" field="*{history}" class="form-control"/></td>
                 </div>
@@ -44,14 +44,12 @@
             </div>
 
             <tr>
-                <td><label text="#{form.user.pass}">Imagen: </label></td>
+                <td><label th:text="#{form.church.img}">Imagen: </label></td>
                 <td><input type="file" field="*{img}" /></td>
             </tr>
 
             <tr>
-                <td>
-                    <button type="submit">Registrar...</button>
-                </td>
+                <td><input type="submit" th:value="#{form.church.add}"/></td>
             </tr>
         </table>
     </fieldset>

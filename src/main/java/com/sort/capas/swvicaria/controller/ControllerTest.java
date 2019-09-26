@@ -7,11 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/Test")
 public class ControllerTest {
 
@@ -23,10 +24,9 @@ public class ControllerTest {
         return "churchform" ;
     }
 
-    @GetMapping("/")
-    public String showAllchurch(Model model) {
-        model.addAttribute("churchs",iChurchService.findAll());
-        return "hotels";
+    @GetMapping("/GetAllChurchs")
+    public List<Church> getAllChurchs() {
+        return iChurchService.findAll();
     }
 
     @GetMapping("/church")
