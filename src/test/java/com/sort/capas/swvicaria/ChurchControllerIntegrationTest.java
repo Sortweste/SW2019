@@ -14,9 +14,10 @@ import org.springframework.test.web.servlet.MockMvc;
 
 //import static org.mockito.Mockito.when;
 
+import static net.bytebuddy.matcher.ElementMatchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @RunWith(SpringRunner.class)
 //Fire up an application context that contains only the beans needed for testing a web controller:
@@ -35,8 +36,7 @@ public class ChurchControllerIntegrationTest {
     }
 
     @Test
-    public void s() throws Exception {
-        //when().thenAnswer()
+    public void whenGetAllChurchs_thenReturnJSON() throws Exception {
         mockMvc.perform(
                 get("/Test/GetAllChurchs")
                 .contentType(MediaType.APPLICATION_JSON))

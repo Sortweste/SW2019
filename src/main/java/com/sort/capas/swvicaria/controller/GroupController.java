@@ -1,12 +1,15 @@
 package com.sort.capas.swvicaria.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("Group")
 public class GroupController {
 
-    @RequestMapping("Group")
+
+    @GetMapping("/")
     public String init(){
         return "GroupForm";
     }
