@@ -10,6 +10,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "teams")
@@ -29,6 +31,15 @@ public class Group {
     @Pattern(regexp = "[^1234567890]", message = "El nombre contiene numeros")
     @Column(name = "t_name")
     private String name;
+
+    /*
+    @Column(name = "t_info")
+    private String information;
+
+
+    @Column(name = "t_schedule")
+    private List<Date> schedule;
+    */
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "c_id")
