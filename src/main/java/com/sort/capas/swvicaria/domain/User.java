@@ -44,9 +44,8 @@ public class User {
     @Column(name = "u_active")
     private Boolean enabled;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="r_id")
     private Role role;
-
 
 }

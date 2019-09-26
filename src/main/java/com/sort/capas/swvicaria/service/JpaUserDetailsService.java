@@ -1,33 +1,28 @@
-/*package com.sort.capas.swvicaria.service;
+package com.sort.capas.swvicaria.service;
 
 import com.sort.capas.swvicaria.domain.User;
+import com.sort.capas.swvicaria.helperClass.UserPrincipal;
 import com.sort.capas.swvicaria.repository.IUserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
 
-@Service("jpaUserDetailsService")
+@Service
 public class JpaUserDetailsService implements UserDetailsService {
 
-    @Autowired
-    private IUserRepository iUserRepository;
+    private IUserRepository userRepository;
+
+    public JpaUserDetailsService(IUserRepository userRepository){
+        this.userRepository = userRepository;
+    }
 
     @Override
-    @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-
-       User user = iUserRepository.findByUsername(s);
-        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-        authorities.add(new SimpleGrantedAuthority(user.getRole().getRole_name()));
-        return null;
-       //new UserDetailsService() ;
+        User user = this.userRepository.findByUsername(s);
+        UserPrincipal userPrincipal = new UserPrincipal(user);
+        return userPrincipal;
     }
-}*/
+}
