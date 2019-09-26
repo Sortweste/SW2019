@@ -31,9 +31,29 @@ public class ControllerTest {
 
     @GetMapping("/church")
     public String showChurch(Model model) {
-        /*model.addAttribute("ch",list);
-        model.addAttribute("one",single);
-        */return "church";
+        /* Test */
+        List<Church> list = new ArrayList<>();
+        Church church = new Church();
+
+        church.setName("Parroquia Monte Tabor");
+        church.setHistory("inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach. inappropriate behavior is often laughed.");
+        church.setImg("/img/b1.jpg");
+        /* Test */
+        model.addAttribute("one",church);
+        return "church";
+    }
+    @GetMapping("/group")
+    public String showGroup(Model model) {
+        /* Test */
+        List<Church> list = new ArrayList<>();
+        Church church = new Church();
+
+        church.setName("Jovenes tabor");
+        church.setHistory("inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach. inappropriate behavior is often laughed.");
+        church.setImg("/img/b3.jpg");
+        /* Test */
+        model.addAttribute("one",church);
+        return "group";
     }
 }
 
