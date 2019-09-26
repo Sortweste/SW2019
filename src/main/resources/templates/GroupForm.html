@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Agregar Iglesia</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <form th:action="@{/adminlogin}" th:object="${usuario}" method="post">
+        <fieldset>
+            <legend>Datos de la iglesia</legend>
+            <table>
+                <div class="form-group">
+                    <tr>
+                        <td><label th:text="#{form.group.name}" >Nombre: </label></td>
+                        <div class="col-sm-10">
+                            <td><input type="text" field="*{name}" class="form-control" /></td>
+                        </div>
+                    </tr>
+                </div>
+
+
+                <div class="form-group">
+                    <tr>
+                        <td><label th:text="#{form.group.info}">Info: </label></td>
+                        <div class="col-sm-10">
+                            <td><input type="text" field="*{information}" class="form-control" /></td>
+                        </div>
+                    </tr>
+                </div>
+
+                <div class="form-group">
+                    <tr>
+                        <td><label th:text="#{form.group.time}">Horario: </label></td>
+                        <div class="col-sm-10">
+                            <td><input type="text" field="*{schedule}" class="form-control"/></td>
+                        </div>
+                    </tr>
+                </div>
+
+                <tr>
+                    <td><label th:text="#{form.group.church}">Iglesia: </label></td>
+                    <td><input type="file" field="*{church}" /></td>
+                </tr>
+
+                <tr>
+                    <td><input type="submit" th:value="#{form.group.add}"/></td>
+                </tr>
+            </table>
+        </fieldset>
+    </form>
+</div>
+
+</body>
+</html>

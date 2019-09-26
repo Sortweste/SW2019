@@ -23,6 +23,10 @@ public class ChurchController{
         return "hotels";
     }
 
+    @GetMapping("/create")
+    public String add(){
+        return "churchform";
+    }
 
     @PostMapping("/")
     public String showGroupsByChurch(@RequestParam("p_id") Long id, Model model){
