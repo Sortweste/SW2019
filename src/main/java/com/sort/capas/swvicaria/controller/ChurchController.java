@@ -25,7 +25,7 @@ public class ChurchController{
 
     @GetMapping("/create")
     public String add(){
-        return "churchform";
+        return "addChurch";
     }
 
     @PostMapping("/saveChurch")
