@@ -30,8 +30,8 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                //.anyRequest().permitAll() //DESCOMENTAR Y COMENTAR LA DE ABAJO :V
-                .anyRequest().authenticated()
+                .anyRequest().permitAll() //DESCOMENTAR Y COMENTAR LA DE ABAJO :V
+                //.anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login").permitAll();
