@@ -11,10 +11,11 @@
 <body>
 
 <div class="container">
+    <div class="form-group">
 <form th:action="@{/adminlogin}" th:object="${usuario}" method="post">
     <fieldset>
-        <legend>Datos de la iglesia</legend>
-        <table>
+        <h1>Datos de la iglesiaf</h1>
+        <table class="table">
             <div class="form-group">
             <tr>
                 <td><label th:text="#{form.church.name}" >Nombre: </label></td>
@@ -49,11 +50,12 @@
             </tr>
 
             <tr>
-                <td><input type="submit" th:value="#{form.church.add}"/></td>
+                <td><input class="btn-success" type="submit" th:value="#{form.church.add}"/></td>
             </tr>
         </table>
     </fieldset>
 </form>
+    </div>
 </div>
 
 </body>
