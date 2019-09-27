@@ -1,5 +1,6 @@
 package com.sort.capas.swvicaria.domain;
 
+import io.swagger.annotations.ApiModel;
 import lombok.*;
 
 import javax.persistence.*;
@@ -15,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Valid
+@ApiModel(description = "Church Entity")
 public class Church {
 
     @Id
