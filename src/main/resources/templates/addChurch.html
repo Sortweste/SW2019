@@ -12,7 +12,8 @@
 </head>
 <body bgcolor="#00000" style="background-color:#240463;">
 <div id="Contenedor">
-    <center><h1 style="font-weight: bold;">Datos de la iglesia</h1></center>
+    <form th:action="@{/Church/saveChurch}" th:object="${church}" method="post">
+    <h1 style="font-weight: bold; margin: auto">Datos de la iglesia</h1>
     <div class="ContentForm">
 
         <div class="input-group input-group-lg">
@@ -48,6 +49,7 @@
 
 
     </div>
+        </form>
 </div>
 </body>
 </html>
