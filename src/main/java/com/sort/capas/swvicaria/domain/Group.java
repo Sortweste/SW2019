@@ -32,14 +32,14 @@ public class Group {
     @Column(name = "t_name")
     private String name;
 
-    /*
+
     @Column(name = "t_info")
     private String information;
 
 
     @Column(name = "t_schedule")
-    private List<Date> schedule;
-    */
+    private Date schedule;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "c_id")
