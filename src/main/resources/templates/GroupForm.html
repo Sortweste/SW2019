@@ -1,60 +1,54 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Agregar Iglesia</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <meta charset="ISO-8859-1">
+    <title>Agregar Grupo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" th:href="@{/css/addChurch.css}">
+    <!-- vinculo a bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- se vincula al hoja de estilo para definir el aspecto del formulario de login-->
 </head>
-<body>
-
-<div class="container">
+<body bgcolor="#00000" style="background-color:#240463;">
+<div id="Contenedor">
     <form th:action="@{/adminlogin}" th:object="${usuario}" method="post">
-        <fieldset>
-            <legend>Datos de la iglesia</legend>
-            <table>
-                <div class="form-group">
-                    <tr>
-                        <td><label th:text="#{form.group.name}" >Nombre: </label></td>
-                        <div class="col-sm-10">
-                            <td><input type="text" field="*{name}" class="form-control" /></td>
-                        </div>
-                    </tr>
-                </div>
+        <h1 style="font-weight: bold; margin: auto">Datos del grupo</h1>
+        <div class="ContentForm">
+        <br>
+            <div class="input-group input-group-lg">
+                <span th:text="#{form.group.name}" class="input-group-addon" id="sizing-addon1">Nombre</span>
+                <input type="text" field="*{name}" class="form-control" />
+            </div>
 
 
-                <div class="form-group">
-                    <tr>
-                        <td><label th:text="#{form.group.info}">Info: </label></td>
-                        <div class="col-sm-10">
-                            <td><input type="text" field="*{information}" class="form-control" /></td>
-                        </div>
-                    </tr>
-                </div>
+            <br>
+            <div class="input-group input-group-lg">
+                <span th:text="#{form.group.info}" class="input-group-addon" id="sizing-addon1">Informacion</span>
 
-                <div class="form-group">
-                    <tr>
-                        <td><label th:text="#{form.group.time}">Horario: </label></td>
-                        <div class="col-sm-10">
-                            <td><input type="text" field="*{schedule}" class="form-control"/></td>
-                        </div>
-                    </tr>
-                </div>
+            </div>
+            <textarea class="form-control" field="*{information}" name="historia" cols="40" rows="5"></textarea>
 
-                <tr>
-                    <td><label th:text="#{form.group.church}">Iglesia: </label></td>
-                    <td><input type="file" field="*{church}" /></td>
-                </tr>
+            <br>
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon" th:text="#{form.group.time}" id="sizing-addon1">Horario</span>
+                <input type="time"  field="*{schedule}" class="form-control" />
+            </div>
 
-                <tr>
-                    <td><input type="submit" th:value="#{form.group.add}"/></td>
-                </tr>
-            </table>
-        </fieldset>
+            <br>
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon" th:text="#{form.group.church}" id="sizing-addon1">Imagen</span>
+                <input type="text" field="*{church}" class="form-control" />
+
+            </div>
+            <br>
+
+
+            <button class="btn btn-lg btn-primary btn-block btn-signin" id="IngresoLog" type="submit" style="margin: auto">Entrar</button>
+
+
+        </div>
     </form>
 </div>
-
 </body>
 </html>
