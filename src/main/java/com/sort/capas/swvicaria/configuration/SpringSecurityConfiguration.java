@@ -30,10 +30,12 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .anyRequest().permitAll() //DESCOMENTAR Y COMENTAR LA DE ABAJO :V
+                //.anyRequest().permitAll() //DESCOMENTAR Y COMENTAR LA DE ABAJO :V
                 //.anyRequest().authenticated()
+                .antMatchers("VicariaSW/Church/").permitAll()
                 .and()
                 .formLogin()
+                .defaultSuccessUrl("/VicariaSW/Church/")
                 .loginPage("/login").permitAll();
     }
 
