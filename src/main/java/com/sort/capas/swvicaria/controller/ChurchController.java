@@ -28,6 +28,11 @@ public class ChurchController{
         return "churchform";
     }
 
+    @PostMapping("/saveChurch")
+    public String saveChurch(){
+        return "index";
+    }
+
     @PostMapping("/")
     public String showGroupsByChurch(@RequestParam("p_id") Long id, Model model){
         model.addAttribute("groups", churchService.findChurchById(id).getGroups());
