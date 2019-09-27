@@ -35,9 +35,9 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 //.anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login").permitAll()
+                .loginPage("/VicariaSW/login").permitAll()
                 .and()
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login")
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/VicariaSW/login")
         ;
     }
 
