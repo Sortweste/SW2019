@@ -36,10 +36,8 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/VicariaSW/Church/").permitAll()
                 .and()
                 .formLogin()
-                .loginPage("/VicariaSW/login").permitAll()
-                .and()
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/VicariaSW/login")
-        ;
+                .defaultSuccessUrl("/VicariaSW/Church/")
+                .loginPage("/login").permitAll();
     }
 
     @Bean
