@@ -39,8 +39,8 @@ public class ChurchControllerIntegrationTest {
         mockMvc.perform(
                 get("/Test/GetAllChurchs")
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
-                //.andExpect(jsonPath("$[0].name").value(is()));
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].name").value(is("")));
     }
 
 }
