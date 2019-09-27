@@ -15,4 +15,9 @@ public class MainController {
         return "login";
     }
 
+    @GetMapping("/Church")
+    public String churchController(){
+        return "forward:/Church/";
+    }
+
 }
