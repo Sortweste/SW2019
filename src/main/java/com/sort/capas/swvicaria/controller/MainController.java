@@ -14,7 +14,7 @@ public class MainController {
 
     @GetMapping("/")
     public String redirect(){
-        return "redirect:/Church/";
+        return "redirect:/VicariaSW/Church";
     }
 
     @GetMapping("/login")
