@@ -5,15 +5,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(securedEnabled = true)
 public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private JpaUserDetailsService jpaUserDetailsService;
@@ -30,24 +31,13 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
-                /*.authorizeRequests().antMatchers("/", "/css/**", "/js/**", "/img/**").permitAll()
-                //.anyRequest().permitAll() //DESCOMENTAR Y COMENTAR LA DE ABAJO :V
-                .antMatchers("/VicariaSW/Church/").permitAll()
-                .antMatchers("/Church/create/").hasRole("LIDER")
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .defaultSuccessUrl("/VicariaSW/Church/")
-                .loginPage("/login").permitAll();*/
-
-                .antMatchers("/", "/css/**", "/js/**", "/img/**").permitAll()
-                .antMatchers("/Church/create").hasRole("LIDER")
-                .antMatchers("/VicariaSW/Church").permitAll()//ADMIN role can access /admin/**
+                .antMatchers("/", "/css/**", "/js/**", "/img/**", "/VicariaSW/Church").permitAll()
                 .anyRequest().authenticated()//any other request just need authentication
                 .and()
                 .formLogin()
                     .loginPage("/login")
-                    .defaultSuccessUrl("/VicariaSW/Church").permitAll();//enable form login
+                    .defaultSuccessUrl("/VicariaSW/Church").permitAll()
+        ;
     }
 
     @Bean

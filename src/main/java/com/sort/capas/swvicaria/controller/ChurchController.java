@@ -2,6 +2,7 @@ package com.sort.capas.swvicaria.controller;
 
 import com.sort.capas.swvicaria.service.IChurchService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,7 @@ public class ChurchController{
         return "hotels";
     }
 
+    @Secured("ROLE_LIDER")
     @GetMapping("/create")
     public String add(){
         return "addChurch";
