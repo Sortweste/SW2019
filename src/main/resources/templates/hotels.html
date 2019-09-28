@@ -1,5 +1,5 @@
 	<!DOCTYPE html>
-	<html lang="zxx" class="no-js" xmlns:th="http://www.thymeleaf.org">
+	<html lang="zxx" class="no-js" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 	<head>
 		<!-- Mobile Specific Meta -->
@@ -83,7 +83,11 @@
 						          </li>					                		
 				            </ul>
 				          </li>					          					          		          
-				          <li><a href="contact.html">Contact</a></li>
+				          <li sec:authorize="isAuthenticated()"><form id="logout" th:href="@{/logout}" method="post">
+							  <button onclick="document.getElementById('logout').submit();" type="submit"> Logout</button>
+						  </form></li>
+
+							<li sec:authorize="!isAuthenticated()"> <a class="btn btn-outline-primary" th:href="@{/login}">Sign in</a></li>
 				        </ul>
 				      </nav><!-- #nav-menu-container -->					      		  
 					</div>

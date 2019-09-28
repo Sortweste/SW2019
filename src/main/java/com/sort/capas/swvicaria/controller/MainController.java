@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 //@RequestMapping("VicariaSW")
 public class MainController {
 
+    @GetMapping("/")
+    public String redirect(){
+        return "redirect:/Church/";
+    }
 
     @GetMapping("/login")
     public String login(){
