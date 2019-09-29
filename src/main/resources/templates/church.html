@@ -83,7 +83,8 @@
                             </li>
                         </ul>
                     </li>
-                    <li sec:authorize="isAuthenticated()"><form id="logout" th:href="@{/logout}" method="post">
+                    <li sec:authorize="isAuthenticated()">
+                        <form id="logout" th:href="@{/logout}" method="post">
                         <button onclick="document.getElementById('logout').submit();" type="submit"> Logout</button>
                     </form></li>
 
