@@ -41,8 +41,8 @@
 			  		<div class="row align-items-center">
 			  			<div class="col-lg-6 col-sm-6 col-6 header-top-left">
 			  				<ul>
-			  					<li><a href="#">Visit Us</a></li>
-			  					<li><a href="#">Buy Tickets</a></li>
+			  					<li><a href="#">Visitanos</a></li>
+			  					<li><a href="#">Conocenos</a></li>
 			  				</ul>			
 			  			</div>
 			  			<div class="col-lg-6 col-sm-6 col-6 header-top-right">
@@ -61,14 +61,14 @@
 				<div class="container main-menu">
 					<div class="row align-items-center justify-content-between d-flex">
 				      <div id="logo">
-				        <a href="index.html"><img th:src="@{/img/logo.png}" alt="" title="" /></a>
+				        <a href="index.html"><img style="width: 145px; height: 30px;" th:src="@{/img/logo110.png}" alt="" title="" /></a>
 				      </div>
 				      <nav id="nav-menu-container">
 				        <ul class="nav-menu">
-				          <li><a href="index.html">Home</a></li>
-				          <li><a href="about.html">About</a></li>
-				          <li><a href="packages.html">Packages</a></li>
-				          <li><a href="hotels.html">Hotels</a></li>
+				          <li><a href="index.html">Inicio</a></li>
+				          <li><a href="about.html">Acerca de nosotros</a></li>
+				          <li><a href="packages.html">Paquetes</a></li>
+				          <li><a href="hotels.html">Parroquias</a></li>
 				          <li><a href="insurance.html">Insurence</a></li>
 				          <li class="menu-has-children"><a href="">Blog</a>
 				            <ul>
@@ -102,7 +102,7 @@
 					<div class="row d-flex align-items-center justify-content-center">
 						<div class="about-content col-lg-12">
 							<h1 class="text-white">
-								Hotels				
+								Parroquias
 							</h1>	
 							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="hotels.html"> Hotels</a></p>
 						</div>	
@@ -117,8 +117,8 @@
 		            <div class="row d-flex justify-content-center">
 		                <div class="menu-content pb-40 col-lg-8">
 		                    <div class="title text-center">
-		                        <h1 class="mb-10">Destinations</h1>
-		                        <p>We all live in an age that belongs to the young at heart. Life that is becoming extremely fast, day to.</p>
+		                        <h1 class="mb-10">Destinos</h1>
+		                        <p>¡Encuentra toda la lista de parroquías que están cerca de tí, únete y forma parte de la historia de cada una de las parroquías de nuestro país!.</p>
 		                    </div>
 		                </div>
 		            </div>						
@@ -126,13 +126,15 @@
 						<div class="col-lg-4" th:each="church: ${churchs}">
 							<div class="single-destinations">
 								<div class="thumb">
-									<!--<img th:src="@{'/uploads/' + ${church.img}}" alt="${church.name}" style="width: 100%;">-->
+									<img th:if="${church.img != null}" th:src="@{'/uploads/' + ${church.img}}" th:alt="${church.name}" style="width: 100%;">
+
+
 								</div>
 								<div class="details">
 									<h4 class="d-flex justify-content-between">
 										<span th:text="${church.name}"></span>
 									</h4>
-									<p th:text="${church.history}"></p>
+									<p style="max-lines: 3;" th:text="${church.history}"></p>
                                     <p th:text="${church.address}"></p>
 								</div>
 							</div>
