@@ -26,7 +26,7 @@ public class Church {
 
     @NotNull
     @Size(min = 0, max = 100, message = "{nameChurch.size}")
-    @Pattern(regexp = "[^1234567890]", message = "{nameChurch.pattern}")
+    //@Pattern(regexp = "[^1234567890]", message = "{nameChurch.pattern}")
     @Column(name = "c_name")
     private String name;
 

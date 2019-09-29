@@ -121,7 +121,7 @@
 						<div class="col-lg-4" th:each="church: ${churchs}">
 							<div class="single-destinations">
 								<div class="thumb">
-									<img th:src="${church.img}" alt="">
+									<img th:src="@{'/uploads/' + ${church.img}}" alt="${church.name}" style="width: 100%;">
 								</div>
 								<div class="details">
 									<h4 class="d-flex justify-content-between">
