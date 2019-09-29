@@ -14,4 +14,9 @@ public class GroupController {
         return "GroupForm";
     }
 
+    @GetMapping("/Test")
+    public String initTest(){
+        return "church";
+    }
+
 }

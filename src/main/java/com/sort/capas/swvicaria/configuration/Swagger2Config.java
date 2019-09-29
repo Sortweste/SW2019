@@ -26,7 +26,7 @@ public class Swagger2Config {
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage(
-                        "com.sort.capas.pokehateoas.controllers"
+                        "com.sort.capas.swvicaria.controllers"
                 ))
                 .paths(PathSelectors.any())
                 .build()
@@ -49,8 +49,8 @@ public class Swagger2Config {
 
     private ApiInfo apiInfo(){
         return new ApiInfoBuilder()
-                .title("Spring Boot Pokemon API")
-                .description("API for Pokedex")
+                .title("Spring Boot VicariaSW")
+                .description("Endpoints Description for VicariaSW")
                 .version("1.0.0")
                 .contact(new Contact("Sortweste", "github.com", "00123216@uca.edu.sv"))
                 .build();

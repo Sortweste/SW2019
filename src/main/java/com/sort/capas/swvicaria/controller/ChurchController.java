@@ -3,10 +3,14 @@ package com.sort.capas.swvicaria.controller;
 import com.sort.capas.swvicaria.domain.Church;
 import com.sort.capas.swvicaria.service.IChurchService;
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+=======
+import org.springframework.security.access.annotation.Secured;
+>>>>>>> bf43ba19404588bc2f3c2e4c5245e10824169b0a
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +35,7 @@ public class ChurchController{
         return "hotels";
     }
 
+    @Secured("ROLE_LIDER")
     @GetMapping("/create")
     public String add(Model model){
         model.addAttribute("church", new Church());
