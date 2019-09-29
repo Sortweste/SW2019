@@ -44,6 +44,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/VicariaSW/Church").deleteCookies("JSESSIONID")
                 .invalidateHttpSession(true)
+                .permitAll()
         ;
     }
 
