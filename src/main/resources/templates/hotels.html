@@ -83,9 +83,7 @@
 						          </li>					                		
 				            </ul>
 				          </li>					          					          		          
-				          <li sec:authorize="isAuthenticated()"><form id="logout" th:href="@{/logout}" method="post">
-							  <button onclick="document.getElementById('logout').submit();" type="submit"> Logout</button>
-						  </form></li>
+				          <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">logout</a></li>
 
 							<li sec:authorize="!isAuthenticated()"> <a class="btn btn-outline-primary" th:href="@{/login}">Sign in</a></li>
 				        </ul>
@@ -125,7 +123,7 @@
 						<div class="col-lg-4" th:each="church: ${churchs}">
 							<div class="single-destinations">
 								<div class="thumb">
-									<img th:src="${church.img}" alt="">
+									<img th:src="@{'/uploads/' + ${church.img}}" alt="${church.name}" style="width: 100%;">
 								</div>
 								<div class="details">
 									<h4 class="d-flex justify-content-between">

@@ -12,19 +12,19 @@
 </head>
 <body bgcolor="#00000" style="background-color:#240463;">
 <div id="Contenedor">
-    <form th:action="@{/Church/saveChurch}" th:object="${church}" method="post">
+    <form th:action="@{/Church/saveChurch}" th:object="${church}" method="post" enctype="multipart/form-data">
     <h1 style="font-weight: bold; margin: auto">Datos de la iglesia</h1>
     <div class="ContentForm">
 
         <div class="input-group input-group-lg">
             <span class="input-group-addon" id="sizing-addon1">Nombre</span>
-            <input type="text" field="*{name}" class="form-control" />
+            <input type="text" th:field="*{name}" class="form-control" />
         </div>
 
         <br>
         <div class="input-group input-group-lg">
             <span class="input-group-addon" id="sizing-addon1">Direccion</span>
-            <input type="text" field="*{address}" class="form-control" />
+            <input type="text" th:field="*{address}" class="form-control" />
         </div>
 
         <br>
@@ -32,14 +32,14 @@
             <span class="input-group-addon" id="sizing-addon1">Historia</span>
 
         </div>
-        <textarea class="form-control" name="historia" cols="40" rows="5"></textarea>
+        <textarea th:field="*{history}" class="form-control" name="historia" cols="40" rows="5"></textarea>
 
         <br>
         <div class="input-group input-group-lg">
             <span class="input-group-addon" id="sizing-addon1">Imagen</span>
             <div class="container" style="padding-left: 40px; padding-top: 10px;">
 
-                <input type="file" field="*{img}" />
+                <input type="file" name="foto" id="foto" />
             </div>
         </div>
         <br>

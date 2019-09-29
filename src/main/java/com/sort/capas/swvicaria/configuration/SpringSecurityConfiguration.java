@@ -40,10 +40,14 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .defaultSuccessUrl("/VicariaSW/Church").permitAll()
                 .and()
                 .logout()
-                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                    .logoutSuccessUrl("/VicariaSW/Church")
+                .clearAuthentication(true)
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/VicariaSW/Church").deleteCookies("JSESSIONID")
+                .invalidateHttpSession(true)
         ;
     }
+
+
 
     @Bean
     DaoAuthenticationProvider authenticationProvider(){
