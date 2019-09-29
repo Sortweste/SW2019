@@ -2174,7 +2174,7 @@ h1, h2, h3, h4, h5, h6 {
   content: "\f107";
   position: absolute;
   right: 15px;
-  font-family: FontAwesome;
+  font-family: SansSerif;
   font-style: normal;
   font-weight: normal;
 }
