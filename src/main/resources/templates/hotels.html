@@ -1,22 +1,16 @@
 	<!DOCTYPE html>
-	<html lang="zxx" class="no-js" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 	<head>
 		<!-- Mobile Specific Meta -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<!-- Favicon-->
 		<link rel="shortcut icon" th:href="@{/img/fav.png}">
-		<!-- Author Meta -->
-		<meta name="author" content="colorlib">
-		<!-- Meta Description -->
-		<meta name="description" content="">
-		<!-- Meta Keyword -->
-		<meta name="keywords" content="">
-		<!-- meta character set -->
 		<meta charset="UTF-8">
 		<!-- Site Title -->
 		<title>Travel</title>
 
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 		<!--
 			CSS
@@ -27,10 +21,18 @@
 			<link rel="stylesheet" th:href="@{/css/jquery-ui.css}">
 			============================================= -->
 
+
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<!--
 		<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+-->
 		<link rel="stylesheet" th:href="@{/css/bootstrap.css}">
 		<link rel="stylesheet" th:href="@{/css/owl.carousel.css}">
 		<link rel="stylesheet" th:href="@{/css/main.css}">
+
+
 		</head>
 		<body>	
 			<header id="header">
@@ -39,16 +41,18 @@
 			  		<div class="row align-items-center">
 			  			<div class="col-lg-6 col-sm-6 col-6 header-top-left">
 			  				<ul>
-			  					<li><a href="#">Visit Us</a></li>
-			  					<li><a href="#">Buy Tickets</a></li>
+			  					<li><a href="#">Visitanos</a></li>
+			  					<li><a href="#">Conocenos</a></li>
 			  				</ul>			
 			  			</div>
 			  			<div class="col-lg-6 col-sm-6 col-6 header-top-right">
 							<div class="header-social">
+								<!--
 								<a href="#"><i class="fa fa-facebook"></i></a>
 								<a href="#"><i class="fa fa-twitter"></i></a>
 								<a href="#"><i class="fa fa-dribbble"></i></a>
 								<a href="#"><i class="fa fa-behance"></i></a>
+								-->
 							</div>
 			  			</div>
 			  		</div>			  					
@@ -57,14 +61,14 @@
 				<div class="container main-menu">
 					<div class="row align-items-center justify-content-between d-flex">
 				      <div id="logo">
-				        <a href="index.html"><img th:src="@{/img/logo.png}" alt="" title="" /></a>
+				        <a href="index.html"><img style="width: 145px; height: 30px;" th:src="@{/img/logo110.png}" alt="" title="" /></a>
 				      </div>
 				      <nav id="nav-menu-container">
 				        <ul class="nav-menu">
-				          <li><a href="index.html">Home</a></li>
-				          <li><a href="about.html">About</a></li>
-				          <li><a href="packages.html">Packages</a></li>
-				          <li><a href="hotels.html">Hotels</a></li>
+				          <li><a href="index.html">Inicio</a></li>
+				          <li><a href="about.html">Acerca de nosotros</a></li>
+				          <li><a href="packages.html">Paquetes</a></li>
+				          <li><a href="hotels.html">Parroquias</a></li>
 				          <li><a href="insurance.html">Insurence</a></li>
 				          <li class="menu-has-children"><a href="">Blog</a>
 				            <ul>
@@ -83,8 +87,7 @@
 						          </li>					                		
 				            </ul>
 				          </li>					          					          		          
-				          <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">logout</a></li>
-
+							<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">logout</a></li>
 							<li sec:authorize="!isAuthenticated()"> <a class="btn btn-outline-primary" th:href="@{/login}">Sign in</a></li>
 				        </ul>
 				      </nav><!-- #nav-menu-container -->					      		  
@@ -99,7 +102,7 @@
 					<div class="row d-flex align-items-center justify-content-center">
 						<div class="about-content col-lg-12">
 							<h1 class="text-white">
-								Hotels				
+								Parroquias
 							</h1>	
 							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="hotels.html"> Hotels</a></p>
 						</div>	
@@ -114,8 +117,8 @@
 		            <div class="row d-flex justify-content-center">
 		                <div class="menu-content pb-40 col-lg-8">
 		                    <div class="title text-center">
-		                        <h1 class="mb-10">Destinations</h1>
-		                        <p>We all live in an age that belongs to the young at heart. Life that is becoming extremely fast, day to.</p>
+		                        <h1 class="mb-10">Destinos</h1>
+		                        <p>¡Encuentra toda la lista de parroquías que están cerca de tí, únete y forma parte de la historia de cada una de las parroquías de nuestro país!.</p>
 		                    </div>
 		                </div>
 		            </div>						
@@ -123,13 +126,15 @@
 						<div class="col-lg-4" th:each="church: ${churchs}">
 							<div class="single-destinations">
 								<div class="thumb">
-									<img th:src="@{'/uploads/' + ${church.img}}" alt="${church.name}" style="width: 100%;">
+									<img th:if="${church.img != null}" th:src="@{'/uploads/' + ${church.img}}" th:alt="${church.name}" style="width: 100%;">
+
+
 								</div>
 								<div class="details">
 									<h4 class="d-flex justify-content-between">
 										<span th:text="${church.name}"></span>
 									</h4>
-									<p th:text="${church.history}"></p>
+									<p style="max-lines: 3;" th:text="${church.history}"></p>
                                     <p th:text="${church.address}"></p>
 								</div>
 							</div>
@@ -234,14 +239,18 @@
 					</div>
 
 					<div class="row footer-bottom d-flex justify-content-between align-items-center">
-						<p class="col-lg-8 col-sm-12 footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+						<p class="col-lg-8 col-sm-12 footer-text m-0">
+
+							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
 						<div class="col-lg-4 col-sm-12 footer-social">
+							<!--
 							<a href="#"><i class="fa fa-facebook"></i></a>
 							<a href="#"><i class="fa fa-twitter"></i></a>
 							<a href="#"><i class="fa fa-dribbble"></i></a>
 							<a href="#"><i class="fa fa-behance"></i></a>
+							-->
 						</div>
 					</div>
 				</div>
@@ -255,10 +264,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script th:src="@{/js/easing.min.js}"></script>
 <script th:src="@{/js/jquery.nice-select.min.js}"></script>
  -->
-
-			<script th:src="@{/js/vendor/jquery-2.2.4.min.js}"></script>
-			<script th:src="@{/js/popper.min.js}"></script>
-			<script th:src="@{/js/vendor/bootstrap.min.js}"></script>
+<!--
+			<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+-->
 			<script th:src="@{/js/jquery-ui.js}"></script>
 			<script th:src="@{/js/superfish.min.js}"></script>
 			<script th:src="@{/js/jquery.ajaxchimp.min.js}"></script>

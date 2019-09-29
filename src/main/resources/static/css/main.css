@@ -2174,7 +2174,7 @@ h1, h2, h3, h4, h5, h6 {
   content: "\f107";
   position: absolute;
   right: 15px;
-  font-family: FontAwesome;
+  font-family: SansSerif;
   font-style: normal;
   font-weight: normal;
 }
@@ -2483,7 +2483,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /*-------- Start Banner Area ------------*/
 .banner-area {
-  background: url(../img/hero-bg.jpg) center;
+  background: url(../img/banner.jpg) center;
   background-size: cover;
 }
 
@@ -3006,7 +3006,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .about-banner {
-  background: url(../img/top-banner.jpg) center;
+  background: url(../img/iglesia.jpg) center;
   background-size: cover;
 }
 

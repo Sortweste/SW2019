@@ -1,12 +1,14 @@
 package com.sort.capas.swvicaria.configuration;
 
 import com.sort.capas.swvicaria.service.JpaUserDetailsService;
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -29,10 +31,11 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(authenticationProvider());
     }
 
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
-                .antMatchers("/", "/css/**","/js/**", "/img/**", "/VicariaSW/Church","/Group/Test").permitAll()
+                .antMatchers("/", "/css/**","/js/**", "/img/**", "/VicariaSW/Church","/Group/Test","/Group/").permitAll()
                 .anyRequest().authenticated()//any other request just need authentication
                 .and()
                 .formLogin()
@@ -44,9 +47,9 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/VicariaSW/Church").deleteCookies("JSESSIONID")
                 .invalidateHttpSession(true)
+                .permitAll()
         ;
     }
-
 
 
     @Bean
