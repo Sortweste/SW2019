@@ -36,19 +36,25 @@
             </div>
 
             <br>
-            <div class="input-group input-group-lg">
-                <span class="input-group-addon" th:text="#{form.group.church}" id="sizing-addon1">Church</span>
-                <input type="text" name="id" id="id" class="form-control" />
-
-            </div>
-            <br>
 
 
-            <button class="btn btn-lg btn-primary btn-block btn-signin" id="IngresoLog" type="submit" style="margin: auto">Entrar</button>
+            <!-- <div class="input-group input-group-lg">
+                 <span class="input-group-addon" th:text="#{form.group.church}" id="sizing-addon1">Church</span>
+                 <select name="id" id="id">
+                     <th:block th:each="church : ${group.church}">
+                     <option th:value="${group.church.name}" th:text="Male"></option>
+                     <option th:value="'F'" th:text="Female"></option>
+                 </select>
+
+             </div> -->
+             <br>
 
 
-        </div>
-    </form>
-</div>
-</body>
-</html>
+             <button class="btn btn-lg btn-primary btn-block btn-signin" id="IngresoLog" type="submit" style="margin: auto">Entrar</button>
+
+
+         </div>
+     </form>
+ </div>
+ </body>
+ </html>
