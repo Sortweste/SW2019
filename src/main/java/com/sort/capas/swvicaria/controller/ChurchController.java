@@ -31,7 +31,7 @@ public class ChurchController{
     @GetMapping("/create")
     public String add(Model model){
         model.addAttribute("church", new Church());
-        return "addChurch";
+        return "formTemplate";
     }
 
     @PostMapping("/saveChurch")
