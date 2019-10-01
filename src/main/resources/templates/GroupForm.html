@@ -12,10 +12,12 @@
 </head>
 <body bgcolor="#00000" style="background-color:#240463;">
 <div id="Contenedor">
+
     <form th:action="@{/Group/saveGroup}" th:object="${group}" method="post">
-        <h1 style="font-weight: bold; margin: auto">Datos del grupo</h1>
+        <h1 style="font-weight: bold; margin: auto">Datos del grupo:</h1>
         <div class="ContentForm">
         <br>
+            <!--
             <div class="input-group input-group-lg">
                 <span th:text="#{form.group.name}" class="input-group-addon" id="sizing-addon1">Nombre</span>
                 <input type="text" th:field="*{name}" class="form-control" />
@@ -34,7 +36,7 @@
                 <span class="input-group-addon" th:text="#{form.group.time}" id="sizing-addon1">Horario</span>
                 <input type="date"  th:field="*{schedule}" class="form-control" />
             </div>
-
+-->
             <br>
 
 
@@ -47,7 +49,15 @@
                  </select>
 
              </div> -->
-             <br>
+
+            <div class="col">
+                <label for="id">Asignar parroquia:</label>
+                <select id="id" th:name="id" class="form-control" style="width: 350px">
+                    <option th:each="p: ${group.church}"
+                            th:if="${p.name != null}" th:value="${p.id}"
+                            th:text="${p.name}"></option>
+                </select>
+            </div>
 
 
              <button class="btn btn-lg btn-primary btn-block btn-signin" id="IngresoLog" type="submit" style="margin: auto">Entrar</button>
