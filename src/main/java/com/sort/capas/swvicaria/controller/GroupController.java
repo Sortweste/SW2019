@@ -38,7 +38,7 @@ public class GroupController {
     @GetMapping("/create")
     public String add(Model model){
         List<Church> churches = churchService.findAll();
-        ChurchGroupDTO group= new ChurchGroupDTO();
+        ChurchGroupDTO group = new ChurchGroupDTO();
         group.setChurch(churches);
         model.addAttribute("group", group);
         return "GroupForm";
