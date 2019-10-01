@@ -20,7 +20,6 @@ public class ChurchGroupDTO {
     private String information;
 
 
-
     private Date schedule;
 
     private List<Church> church;
