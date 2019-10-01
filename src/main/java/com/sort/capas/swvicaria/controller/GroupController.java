@@ -25,7 +25,8 @@ public class GroupController {
 
 
     @GetMapping("/")
-    public String init(){
+    public String init(Model model){
+        model.addAttribute("groups", groupService.findAll());
         return "church";
     }
 
