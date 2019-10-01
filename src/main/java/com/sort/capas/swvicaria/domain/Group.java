@@ -28,7 +28,7 @@ public class Group {
 
     @NotNull
     @Size(min = 0, max = 100, message = "El nombre debe ser entre 0 y 100 caracteres")
-    @Pattern(regexp = "[^1234567890]", message = "El nombre contiene numeros")
+   // @Pattern(regexp = "[^1234567890]", message = "El nombre contiene numeros")
     @Column(name = "t_name")
     private String name;
 

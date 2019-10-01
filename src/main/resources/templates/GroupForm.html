@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:id="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="ISO-8859-1">
     <title>Agregar Grupo</title>
@@ -12,13 +12,13 @@
 </head>
 <body bgcolor="#00000" style="background-color:#240463;">
 <div id="Contenedor">
-    <form th:action="@{/adminlogin}" th:object="${usuario}" method="post">
+    <form th:action="@{/Group/saveGroup}" th:object="${group}" method="post">
         <h1 style="font-weight: bold; margin: auto">Datos del grupo</h1>
         <div class="ContentForm">
         <br>
             <div class="input-group input-group-lg">
                 <span th:text="#{form.group.name}" class="input-group-addon" id="sizing-addon1">Nombre</span>
-                <input type="text" field="*{name}" class="form-control" />
+                <input type="text" th:field="*{name}" class="form-control" />
             </div>
 
 
@@ -27,28 +27,34 @@
                 <span th:text="#{form.group.info}" class="input-group-addon" id="sizing-addon1">Informacion</span>
 
             </div>
-            <textarea class="form-control" field="*{information}" name="historia" cols="40" rows="5"></textarea>
+            <textarea class="form-control" th:field="*{information}" name="historia" cols="40" rows="5"></textarea>
 
             <br>
             <div class="input-group input-group-lg">
                 <span class="input-group-addon" th:text="#{form.group.time}" id="sizing-addon1">Horario</span>
-                <input type="date"  field="*{schedule}" class="form-control" />
+                <input type="date"  th:field="*{schedule}" class="form-control" />
             </div>
 
             <br>
-            <div class="input-group input-group-lg">
-                <span class="input-group-addon" th:text="#{form.group.church}" id="sizing-addon1">Imagen</span>
-                <input type="text" field="*{church}" class="form-control" />
-
-            </div>
-            <br>
 
 
-            <button class="btn btn-lg btn-primary btn-block btn-signin" id="IngresoLog" type="submit" style="margin: auto">Entrar</button>
+            <!-- <div class="input-group input-group-lg">
+                 <span class="input-group-addon" th:text="#{form.group.church}" id="sizing-addon1">Church</span>
+                 <select name="id" id="id">
+                     <th:block th:each="church : ${group.church}">
+                     <option th:value="${group.church.name}" th:text="Male"></option>
+                     <option th:value="'F'" th:text="Female"></option>
+                 </select>
+
+             </div> -->
+             <br>
 
 
-        </div>
-    </form>
-</div>
-</body>
-</html>
+             <button class="btn btn-lg btn-primary btn-block btn-signin" id="IngresoLog" type="submit" style="margin: auto">Entrar</button>
+
+
+         </div>
+     </form>
+ </div>
+ </body>
+ </html>

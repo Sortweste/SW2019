@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface IGroupService {
     List<Group> findGroupsByChurch(Church church);
+    Group save(Group group,long id);
 }
