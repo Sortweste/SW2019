@@ -30,9 +30,15 @@
 -->
     <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
     <link rel="stylesheet" th:href="@{/css/owl.carousel.css}">
+<<<<<<< HEAD
     <link rel="stylesheet" th:href="@{/css/main.css}">
 
 
+=======
+
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+
+>>>>>>> a32d2df0bc3d72bb84da926de4d2806d49dfdbfd
 </head>
 <body>
 <header id="header">
@@ -96,15 +102,14 @@
 </header><!-- #header -->
 
 <!-- start banner Area -->
-<section class="about-banner relative">
+
+<section class="banner-area relative blog-home-banner" th:each="group: ${one}" id="home">
     <div class="overlay overlay-bg"></div>
     <div class="container">
         <div class="row d-flex align-items-center justify-content-center">
-            <div class="about-content col-lg-12">
-                <h1 class="text-white">
-                    Grupos
-                </h1>
-                <p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="hotels.html"> Hotels</a></p>
+            <div class="about-content blog-header-content col-lg-12">
+               <!-- <h1 class="text-white" th:text="${group.name}"></h1>
+                <p class="text-white" th:text="${church.history}"></p> -->
             </div>
         </div>
     </div>
@@ -125,17 +130,26 @@
         <div class="row">
             <div class="col-lg-4" th:each="church: ${churchs}">
                 <div class="single-destinations">
+<<<<<<< HEAD
                     <div class="thumb">
                         <img th:if="${church.img != null}" th:src="@{'/uploads/' + ${church.img}}" th:alt="${church.name}" style="width: 100%;">
 
 
                     </div>
+=======
+>>>>>>> a32d2df0bc3d72bb84da926de4d2806d49dfdbfd
                     <div class="details">
                         <h4 class="d-flex justify-content-between">
-                            <span th:text="${church.name}"></span>
                         </h4>
+<<<<<<< HEAD
                         <p style="max-lines: 3;" th:text="${church.history}"></p>
                         <p th:text="${church.address}"></p>
+=======
+                     <!--       <span th:text="${church.name}"></span>
+
+                        <p th:text="${church.history}"></p>
+                        <p th:text="${church.address}"></p>-->
+>>>>>>> a32d2df0bc3d72bb84da926de4d2806d49dfdbfd
                     </div>
                 </div>
             </div>
@@ -155,6 +169,19 @@
                     Feel free to ask us. <br>
                     We‘ll make it for you
                 </h1>
+                <!--Test Area to see if the data from groups comes through -->
+
+                <table>
+                    <th:block th:each="group: ${groups}">
+                        <tr>
+                            <td th:text="${group.name}">...</td>
+                            <td th:text="${group.information}">...</td>
+                            <td th:text="${group.schedule}">...</td>
+                        </tr>
+
+                    </th:block>
+                </table>
+                <!-- Done -->
                 <p>
                     inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach. inappropriate behavior is often laughed.
                 </p>
@@ -167,6 +194,7 @@
     </div>
 </section>
 <!-- End home-about Area -->
+
 
 <!-- start footer Area -->
 <footer class="footer-area section-gap">
