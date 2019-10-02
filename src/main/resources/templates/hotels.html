@@ -66,14 +66,10 @@
 				      <nav id="nav-menu-container">
 				        <ul class="nav-menu">
 				          <li><a href="index.html">Inicio</a></li>
-				          <li><a href="about.html">Acerca de nosotros</a></li>
-				          <li><a href="packages.html">Paquetes</a></li>
-				          <li><a href="hotels.html">Parroquias</a></li>
-				          <li><a href="insurance.html">Insurence</a></li>
-				          <li class="menu-has-children"><a href="">Blog</a>
+				          <li class="menu-has-children"><a href="">Grupo</a>
 				            <ul>
-				              <li><a href="blog-home.html">Blog Home</a></li>
-				              <li><a href="blog-single.html">Blog Single</a></li>
+				              <li sec:authorize="hasRole('ROLE_LIDER')"><a href="blog-home.html">Crear Grupo</a></li>
+				              <li><a href="blog-single.html">Ver Grupos</a></li>
 				            </ul>
 				          </li>	
 				          <li class="menu-has-children"><a href="">Pages</a>
