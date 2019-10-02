@@ -2097,7 +2097,7 @@ h1, h2, h3, h4, h5, h6 {
 .main-menu {
   padding-bottom: 20px;
   padding-top: 20px;
-  background: rgba(255, 255, 255, 0.15);
+  background: #054f1998;
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -2211,7 +2211,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-menu ul {
-  margin: 22px 0 0 0;
+  margin: 0px 0 0 0;
   padding: 10px;
   box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
   background: #fff;
