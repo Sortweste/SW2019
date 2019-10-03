@@ -44,6 +44,7 @@ public class GroupController {
         return "GroupForm";
     }
 
+    @Secured("ROLE_LIDER")
     @PostMapping("/saveGroup")
     public String saveChurch(@ModelAttribute("group") Group group, @RequestParam("id") long id){
         groupService.save(group, id);

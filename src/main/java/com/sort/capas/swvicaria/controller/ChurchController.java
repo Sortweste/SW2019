@@ -8,11 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
 
 
 @Controller
@@ -35,6 +30,7 @@ public class ChurchController{
         return "formTemplate";
     }
 
+    @Secured("ROLE_LIDER")
     @PostMapping("/saveChurch")
     public String saveChurch(@ModelAttribute("church") Church church, @RequestParam("foto") MultipartFile foto){
         churchService.save(church, foto);
