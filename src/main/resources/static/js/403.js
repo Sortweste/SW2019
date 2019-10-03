@@ -1,7 +1,7 @@
-const interval = 500;
+var interval = 500;
 
 function generateLocks() {
-  const lock = document.createElement('div'),
+  var lock = document.createElement('div'),
         position = generatePosition();
   lock.innerHTML = '<div class="top"></div><div class="bottom"></div>';
   lock.style.top = position[0];
@@ -17,8 +17,8 @@ function generateLocks() {
   }, 2000);
 }
 function generatePosition() {
-  const x = Math.round((Math.random() * 100) - 10) + '%';
-  const y = Math.round(Math.random() * 100) + '%';
+  var x = Math.round((Math.random() * 100) - 10) + '%';
+  var y = Math.round(Math.random() * 100) + '%';
   return [x,y];
 }
 setInterval(generateLocks,interval);
