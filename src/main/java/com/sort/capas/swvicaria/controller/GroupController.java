@@ -58,7 +58,7 @@ public class GroupController {
     public String showGroups( Model model,@RequestParam("id") long id){
         List<Group> groups =groupService.findGroupsByChurch(id);
         model.addAttribute("groups", groups);
-        return "group";
+        return "church";
     }
 
 }
