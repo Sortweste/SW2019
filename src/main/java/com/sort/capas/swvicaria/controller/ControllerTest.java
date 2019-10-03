@@ -56,14 +56,16 @@ public class ControllerTest {
         return "group";
     }
 
+    /*
     @GetMapping("/error403")
     public String error403(Model model) {
         return "403";
     }
 
+
     @GetMapping("/error404")
     public String error404(Model model) {
         return "404";
-    }
+    }*/
 }
 

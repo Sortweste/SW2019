@@ -37,7 +37,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/", "/css/**","/js/**", "/img/**", "/VicariaSW/Church","/Group/Test",
                         "/Group/" , "/Church/**").permitAll()
-                .anyRequest().authenticated()//any other request just need authentication
+                //.anyRequest().authenticated()//any other request just need authentication
                 .and()
                 .formLogin()
                     .loginPage("/login")
@@ -49,8 +49,6 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .logoutSuccessUrl("/VicariaSW/Church").deleteCookies("JSESSIONID")
                     .invalidateHttpSession(true)
                     .permitAll()
-                .and()
-                .exceptionHandling().accessDeniedPage("/Test/error")
                 ;
         ;
     }
