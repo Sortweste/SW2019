@@ -91,13 +91,12 @@
 </header><!-- #header -->
 
 <!-- start banner Area -->
-<section class="banner-area relative blog-home-banner" th:each="church: ${one}" th:style="'background-image:url('+${church.img}+');'" id="home">
+<section class="banner-area relative blog-home-banner" th:each="group: ${groups}"  id="home">
     <div class="overlay overlay-bg"></div>
     <div class="container">
         <div class="row d-flex align-items-center justify-content-center">
             <div class="about-content blog-header-content col-lg-12">
-                <h1 class="text-white" th:text="${church.name}"></h1>
-                <p class="text-white" th:text="${church.history}"></p>
+
             </div>
         </div>
     </div>
@@ -197,6 +196,19 @@
     </div>
 </section>
 <!-- End recent-blog Area -->
+<!--Test area -->
+<table>
+    <th:block th:each="group: ${groups}">
+        <tr>
+            <td th:text="${group.name}">...</td>
+            <td th:text=" -- ">...</td>
+            <td th:text="${group.information}">...</td>
+            <td th:text=" -- ">...</td>
+            <td th:text="${group.schedule}">...</td>
+        </tr>
+    </th:block>
+</table>
+<!-- End Test area -->
 
 
 

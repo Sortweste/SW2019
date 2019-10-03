@@ -54,12 +54,11 @@ public class GroupController {
         return "redirect:/";
     }
 
-    @Secured("ROLE_LIDER")
     @PostMapping("/showByChurch")
     public String showGroups( Model model,@RequestParam("id") long id){
         List<Group> groups =groupService.findGroupsByChurch(id);
         model.addAttribute("groups", groups);
-        return "algo"; //POR FAVOR CAMBIAR
+        return "group";
     }
 
 }
