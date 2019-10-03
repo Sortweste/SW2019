@@ -106,13 +106,18 @@
 									</h4>
 									<p style="max-lines: 3;" th:text="${church.history}"></p>
                                     <p th:text="${church.address}"></p>
-
-									<form th:action="@{/Church/edit}" method="post">
-										<input type="hidden" th:value="${church.id}" name="id"/>
-										<input type="submit" id="botonenviar" class="btn btn-success shadow my-3" value="Editar">
-									</form>
-
+									<div class="row">
+										<form th:action="@{/Church/edit}" method="post">
+											<input type="hidden" th:value="${church.id}" name="id"/>
+											<input sec:authorize="hasRole('ROLE_LIDER')" type="submit" id="botonenviar" class="btn btn-success shadow my-3" value="Editar">
+										</form>
+										<form th:action="@{/Group/showByChurch}" method="post">
+											<input type="hidden" th:value="${church.id}" name="id"/>
+											<input style="margin-left: 5px;" type="submit" id="botonenviar" class="btn btn-primary shadow my-3" value="Ver Grupos">
+										</form>
+									</div>
 								</div>
+
 							</div>
 						</div>
 					</div>
