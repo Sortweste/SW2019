@@ -43,11 +43,14 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .defaultSuccessUrl("/VicariaSW/Church").permitAll()
                 .and()
                 .logout()
-                .clearAuthentication(true)
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/VicariaSW/Church").deleteCookies("JSESSIONID")
-                .invalidateHttpSession(true)
-                .permitAll()
+                    .clearAuthentication(true)
+                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                    .logoutSuccessUrl("/VicariaSW/Church").deleteCookies("JSESSIONID")
+                    .invalidateHttpSession(true)
+                    .permitAll()
+                .and()
+                .exceptionHandling().accessDeniedPage("/Test/error")
+                ;
         ;
     }
 
