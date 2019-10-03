@@ -25,6 +25,11 @@ public class GroupServiceImpl implements IGroupService {
     }
 
     @Override
+    public List<Group> findAll() {
+        return iGroupRepository.findAll();
+    }
+
+    @Override
     @Transactional
     public Group save(Group group,long id) {
         Group grupo=new Group();

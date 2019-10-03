@@ -55,5 +55,10 @@ public class ControllerTest {
         model.addAttribute("one",church);
         return "group";
     }
+
+    @GetMapping("/error")
+    public String error403(Model model) {
+        return "403";
+    }
 }
 
