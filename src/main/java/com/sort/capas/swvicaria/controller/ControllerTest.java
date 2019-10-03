@@ -67,5 +67,10 @@ public class ControllerTest {
     public String error404(Model model) {
         return "404";
     }*/
+
+    @GetMapping("/error500")
+    public String error500(Model model) {
+        return "500";
+    }
 }
 

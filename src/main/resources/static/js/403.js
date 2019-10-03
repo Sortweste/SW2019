@@ -23,3 +23,7 @@ function generatePosition() {
 }
 setInterval(generateLocks,interval);
 generateLocks();
+
+
+
+
