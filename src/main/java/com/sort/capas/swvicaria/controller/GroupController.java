@@ -3,6 +3,7 @@ package com.sort.capas.swvicaria.controller;
 import com.sort.capas.swvicaria.domain.Church;
 import com.sort.capas.swvicaria.domain.Group;
 import com.sort.capas.swvicaria.DTO.ChurchGroupDTO;
+import com.sort.capas.swvicaria.helperClass.FetchGroupsByChurch;
 import com.sort.capas.swvicaria.service.IChurchService;
 import com.sort.capas.swvicaria.service.IGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ public class GroupController {
 
     @Autowired
     private IChurchService churchService;
+
 
 
     @GetMapping("/")
@@ -47,9 +49,17 @@ public class GroupController {
 
     @Secured("ROLE_LIDER")
     @PostMapping("/saveGroup")
-    public String saveChurch(@ModelAttribute("group") Group group, @RequestParam("id") long id){
+    public String saveGroup(@ModelAttribute("group") Group group, @RequestParam("id") long id){
         groupService.save(group, id);
         return "redirect:/";
+    }
+
+    @Secured("ROLE_LIDER")
+    @PostMapping("/showByChurch")
+    public String showGroups( Model model,@RequestParam("id") long id){
+        List<Group> groups =groupService.findGroupsByChurch(id);
+        model.addAttribute("groups", groups);
+        return "algo"; //POR FAVOR CAMBIAR
     }
 
 }

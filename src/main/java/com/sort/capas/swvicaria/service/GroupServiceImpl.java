@@ -20,7 +20,8 @@ public class GroupServiceImpl implements IGroupService {
     IChurchRepository ChurchRepo;
 
     @Override
-    public List<Group> findGroupsByChurch(Church church) {
+    public List<Group> findGroupsByChurch(long id) {
+        Church church= ChurchRepo.findChurchById(id);
         return iGroupRepository.findGroupsByChurch(church);
     }
 

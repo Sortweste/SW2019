@@ -12,9 +12,11 @@ import java.util.List;
 @Data
 public class ChurchGroupDTO {
 
+    private long id; //Por si se quiere modificar el grupo luego.
+
     @NotNull
     @Size(min = 0, max = 100, message = "El nombre debe ser entre 0 y 100 caracteres")
-    // @Pattern(regexp = "[^1234567890]", message = "El nombre contiene numeros")
+    // @Pattern(regexp = "[^1234567890]", message = "El nombre contiene numeros"
 
     private String name;
 

@@ -6,7 +6,7 @@ import com.sort.capas.swvicaria.domain.Group;
 import java.util.List;
 
 public interface IGroupService {
-    List<Group> findGroupsByChurch(Church church);
+    List<Group> findGroupsByChurch(long id);
     List<Group> findAll();
     Group save(Group group,long id);
 }

@@ -17,7 +17,4 @@ public class FetchGroupsByChurch {
 
     public FetchGroupsByChurch(){}
 
-    protected List<Group> GetGroupsListByChurch(Long id){
-        return iGroupService.findGroupsByChurch(churchService.findChurchById(id));
-    }
 }

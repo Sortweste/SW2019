@@ -51,10 +51,12 @@ public class ChurchController{
         return "modifyChurch";
     }
 
-    @PostMapping("/")
-    public String showGroupsByChurch(@RequestParam("p_id") Long id, Model model){
-        model.addAttribute("groups", churchService.findChurchById(id).getGroups());
-        return "index";
+    @Secured("ROLE_LIDER")
+    @PostMapping("/modifyChurch")
+    public String saveEChurch(@ModelAttribute("church") Church church, @RequestParam("foto") MultipartFile foto){
+        churchService.saveE(church, foto);
+        return "redirect:/";
     }
+
 
 }

@@ -52,4 +52,25 @@ public class ChurchServiceImpl implements IChurchService {
         iglesia.setAddress(church.getAddress());
         return churchRepository.save(iglesia);
     }
+
+    @Override
+    public Church saveE(Church church, MultipartFile foto) {
+        Church iglesia=churchRepository.findChurchById(church.getId());
+        if(!foto.isEmpty()){
+            Path dirRec = Paths.get("C://Temp//uploads");
+            String rootPath = dirRec.toFile().getAbsolutePath();
+            try {
+                byte[] bytes = foto.getBytes();
+                Path rutaCompleta = Paths.get(rootPath + "//" + foto.getOriginalFilename());
+                Files.write(rutaCompleta, bytes);
+                iglesia.setImg(foto.getOriginalFilename());
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+        iglesia.setName(church.getName());
+        iglesia.setHistory(church.getHistory());
+        iglesia.setAddress(church.getAddress());
+        return churchRepository.saveAndFlush(iglesia);
+    }
 }
