@@ -42,6 +42,15 @@ public class ChurchController{
         return "redirect:/";
     }
 
+    @Secured("ROLE_LIDER")
+    @PostMapping("/edit")
+    public String edit(@RequestParam("id") Long id,Model model){
+        Church church= new Church();
+        church= churchService.findChurchById(id);
+        model.addAttribute("church", church);
+        return "modifyChurch";
+    }
+
     @PostMapping("/")
     public String showGroupsByChurch(@RequestParam("p_id") Long id, Model model){
         model.addAttribute("groups", churchService.findChurchById(id).getGroups());
