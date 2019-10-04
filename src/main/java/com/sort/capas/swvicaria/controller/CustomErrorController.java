@@ -24,18 +24,18 @@ public class CustomErrorController implements ErrorController {
             if(statusCode == HttpStatus.NOT_FOUND.value()) {
                 return "404";
 
-            }/* Reservado para el error 500
+            }
+
             else if(statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
-                return "error-500";
-            }*/
+                return "500";
+            }
+
             else if(statusCode == HttpStatus.FORBIDDEN.value()){
                 return "403";
             }
+
         }
-        /*Este return esta reservado cuando ahuevo ni puta idea de lo que truene,
-        puede ser una pagina asi general como: Something went wrong!
-        Our Engineers are on it */
-        return "403";
+        return "500";
     }
 
     @Override

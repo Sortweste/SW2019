@@ -1,5 +1,6 @@
 package com.sort.capas.swvicaria.configuration;
 
+import com.sort.capas.swvicaria.controller.CustomLoginSuccessHandler;
 import com.sort.capas.swvicaria.service.JpaUserDetailsService;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
@@ -21,16 +22,18 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private JpaUserDetailsService jpaUserDetailsService;
+    private CustomLoginSuccessHandler loginSuccessHandler;
 
-    public SpringSecurityConfiguration(JpaUserDetailsService jpaUserDetailsService){
+    public SpringSecurityConfiguration(JpaUserDetailsService jpaUserDetailsService,
+                                       CustomLoginSuccessHandler loginSuccessHandler){
         this.jpaUserDetailsService = jpaUserDetailsService;
+        this.loginSuccessHandler = loginSuccessHandler;
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authenticationProvider());
     }
-
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -41,7 +44,8 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                     .loginPage("/login")
-                    .defaultSuccessUrl("/VicariaSW/Church").permitAll()
+                    //.defaultSuccessUrl("/VicariaSW/Church").permitAll()
+                    .successHandler(loginSuccessHandler)
                 .and()
                 .logout()
                     .clearAuthentication(true)
@@ -52,7 +56,6 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 ;
         ;
     }
-
 
     @Bean
     DaoAuthenticationProvider authenticationProvider(){
