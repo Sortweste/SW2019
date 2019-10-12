@@ -40,4 +40,9 @@ public class GroupServiceImpl implements IGroupService {
         grupo.setChurch(ChurchRepo.findChurchById(id));
         return iGroupRepository.save(grupo);
     }
+
+    @Override
+    public Group findGroup(long id) {
+        return iGroupRepository.findGroupById(id);
+    }
 }

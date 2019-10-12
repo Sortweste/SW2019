@@ -10,6 +10,7 @@ import java.util.List;
 public interface IGroupRepository extends JpaRepository<Group, Long> {
 
     List<Group> findGroupsByChurch(Church church);
+    Group findGroupById(Long id);
 
 }
 

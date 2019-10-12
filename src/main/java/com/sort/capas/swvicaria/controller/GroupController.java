@@ -61,4 +61,11 @@ public class GroupController {
         return "church";
     }
 
+    @PostMapping("/showGroup")
+    public String showGroup( Model model,@RequestParam("id") long id){
+        Group group = groupService.findGroup(id);
+        model.addAttribute("group", group);
+        return "group";
+    }
+
 }
