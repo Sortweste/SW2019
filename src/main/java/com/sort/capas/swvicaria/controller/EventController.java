@@ -5,6 +5,8 @@ import com.sort.capas.swvicaria.domain.Event;
 import com.sort.capas.swvicaria.domain.Group;
 import com.sort.capas.swvicaria.service.IEventService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,11 +20,11 @@ public class EventController {
     @Autowired
     IEventService ieventService;
 
-    @Secured("ROLE_LIDER")
+    //@Secured("ROLE_LIDER")
     @PostMapping("/saveEvent")
-    public String saveChurch(@ModelAttribute("event") Event event){
-        ieventService.save(event);
-        return "redirect:/";
+    public ResponseEntity<String> saveEvent(){
+       // ieventService.save(event);
+        return new ResponseEntity<>("hola", HttpStatus.OK);
     }
 
 }
