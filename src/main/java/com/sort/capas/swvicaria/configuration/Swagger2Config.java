@@ -50,7 +50,7 @@ public class Swagger2Config {
     private ApiInfo apiInfo(){
         return new ApiInfoBuilder()
                 .title("Spring Boot VicariaSW")
-                .description("Endpoints Description for VicariaSW")
+                .description("API Description for VicariaSW")
                 .version("1.0.0")
                 .contact(new Contact("Sortweste", "github.com", "00123216@uca.edu.sv"))
                 .build();
