@@ -48,6 +48,10 @@ public class User {
     @JoinColumn(name="r_id")
     private Role role;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="t_id")
+    private Group group;
+
     public User(String username, String password) {
         this.username = username;
         this.password = password;
