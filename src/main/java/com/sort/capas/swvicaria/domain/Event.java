@@ -29,6 +29,9 @@ public class Event {
     @Column(name = "e_author")
     private String author;
 
+    @Column(name = "e_subauthor")
+    private String sub_author;
+
     @Column(name = "e_date_start")
     private Date date_start;
 

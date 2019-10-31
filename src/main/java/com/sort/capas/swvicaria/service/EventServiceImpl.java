@@ -1,10 +1,17 @@
 package com.sort.capas.swvicaria.service;
 
+import com.sort.capas.swvicaria.DTO.FormDTO;
 import com.sort.capas.swvicaria.domain.Event;
 import com.sort.capas.swvicaria.repository.IEventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Date;
 
 @Service
 public class EventServiceImpl implements IEventService {
@@ -13,7 +20,29 @@ public class EventServiceImpl implements IEventService {
 
     @Override
     @Transactional
-    public Event save(Event event) {
-        return ieventRepository.save(event);
+    public Event save(FormDTO[] dto) throws ParseException {
+        List<FormDTO> objetos = Arrays.asList(dto);
+
+        Event e = new Event();
+        for(FormDTO d : dto) {
+            if (d.getName().equals("author")) e.setAuthor(d.getValue());
+            if (d.getName().equals("sub_author")) e.setSub_author(d.getValue());
+            if (d.getName().equals("title")) e.setName(d.getValue());
+            if (d.getName().equals("info")) e.setInformation(d.getValue());
+            if (d.getName().equals("start")) {
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MMM-dd");
+                Date date = formatter.parse(d.getValue());
+                e.setDate_start(date);
+            };
+            if (d.getName().equals("end")) {
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MMM-dd");
+                Date date = formatter.parse(d.getValue());
+                e.setDate_end(date);
+            };
+
+        }
+
+
+        return ieventRepository.save(e);
     }
 }
