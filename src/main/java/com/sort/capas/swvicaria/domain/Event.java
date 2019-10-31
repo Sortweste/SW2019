@@ -20,8 +20,8 @@ public class Event {
     @Column(name = "e_id")
     private Long id;
 
-    @Column(name = "e_name")
-    private String name;
+    @Column(name = "e_title")
+    private String title;
 
     @Column(name = "e_info")
     private String information;
@@ -32,9 +32,12 @@ public class Event {
     @Column(name = "e_subauthor")
     private String sub_author;
 
-    @Column(name = "e_date_start")
+    @Column(name = "e_date")
     private Date date_start;
 
-    @Column(name = "e_date_end")
-    private Date date_end;
+    @Column(name = "e_time")
+    private String time;
+
+    @Column(name = "e_cost")
+    private Integer cost;
 }

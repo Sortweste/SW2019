@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Date;
@@ -27,17 +28,17 @@ public class EventServiceImpl implements IEventService {
         for(FormDTO d : dto) {
             if (d.getName().equals("author")) e.setAuthor(d.getValue());
             if (d.getName().equals("sub_author")) e.setSub_author(d.getValue());
-            if (d.getName().equals("title")) e.setName(d.getValue());
+            if (d.getName().equals("title")) e.setTitle(d.getValue());
             if (d.getName().equals("info")) e.setInformation(d.getValue());
             if (d.getName().equals("start")) {
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MMM-dd");
                 Date date = formatter.parse(d.getValue());
                 e.setDate_start(date);
             };
-            if (d.getName().equals("end")) {
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MMM-dd");
-                Date date = formatter.parse(d.getValue());
-                e.setDate_end(date);
+            if (d.getName().equals("time")) {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH.mm");
+                String time = String.format(d.getValue(), formatter);
+                e.setTime(time);
             };
 
         }
