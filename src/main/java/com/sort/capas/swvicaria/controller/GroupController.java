@@ -3,9 +3,11 @@ package com.sort.capas.swvicaria.controller;
 import com.sort.capas.swvicaria.domain.Church;
 import com.sort.capas.swvicaria.domain.Group;
 import com.sort.capas.swvicaria.DTO.ChurchGroupDTO;
+import com.sort.capas.swvicaria.domain.User;
 import com.sort.capas.swvicaria.helperClass.FetchGroupsByChurch;
 import com.sort.capas.swvicaria.service.IChurchService;
 import com.sort.capas.swvicaria.service.IGroupService;
+import com.sort.capas.swvicaria.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -24,6 +26,8 @@ public class GroupController {
     @Autowired
     private IChurchService churchService;
 
+    @Autowired
+    private IUserService userService;
 
 
     @GetMapping("/")
@@ -59,6 +63,15 @@ public class GroupController {
         List<Group> groups =groupService.findGroupsByChurch(id);
         model.addAttribute("groups", groups);
         return "church";
+    }
+
+    @PostMapping("/showGroup")
+    public String showGroup( Model model,@RequestParam("id") long id){
+        Group group = groupService.findGroup(id);
+        List<User> users = userService.findAll();
+        model.addAttribute("group", group);
+        model.addAttribute("users",users);
+        return "group";
     }
 
 }

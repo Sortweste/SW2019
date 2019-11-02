@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx" class="no-js" xmlns:th="http://www.thymeleaf.org">
+<html lang="zxx" class="no-js" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <!-- Mobile Specific Meta -->
@@ -26,86 +26,213 @@
     <link rel="stylesheet" th:href="@{/css/nice-select.css}">
     <link rel="stylesheet" th:href="@{/css/jquery-ui.css}">
     ============================================= -->
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@8/dist/sweetalert2.min.css" id="theme-styles">
     <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/css/sweetalert.css}">
     <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
     <link rel="stylesheet" th:href="@{/css/owl.carousel.css}">
     <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 <body>
+
+<script type="text/javascript">
+
+    function ev(){
+        var d = $('#my-form').serializeArray();
+        var f = JSON.stringify(d);
+        var persona = document.getElementById('author').value;
+        var persona2 = document.getElementById('sub_author').value;
+        var title = document.getElementById('title').value;
+        var info = document.getElementById('info').value;
+        var start = document.getElementById('start').value;
+        var end = document.getElementById('end').value;
+
+
+        swal({
+                title: "Estas seguro de agregar esta informacion?",
+                text: "La informacion que pretendes enviar es\n\n"
+                    +"\nAutor: " +persona
+                    +"\nCo-Autor: " +persona2
+                    +"\nTitulo: " +title
+                    +"\nInformacion: " +info
+                    +"\nFecha inicio: " +start
+                    +"\nFecha fin: "+end,
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-danger",
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "aceptar!",
+                cancelButtonText: "cancel!",
+                closeOnConfirm: true,
+                closeOnCancel: true
+            },
+            function(isConfirm) {
+                if (isConfirm) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+
+                    Toast.fire({
+                        type: 'success',
+                        title: 'Signed in successfully'
+                    })
+                    var persona = document.getElementById('author').value ="";
+                    var persona2 = document.getElementById('sub_author').value="";
+                    var title = document.getElementById('title').value="";
+                    var info = document.getElementById('info').value="";
+                    var start = document.getElementById('start').value="";
+                    var end = document.getElementById('end').value="";
+                } else {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+
+                    Toast.fire({
+                        type: 'error',
+                        title: 'Signed in error'
+                    })
+                }
+            });
+    }
+    function ev2(){
+        var d = $('#my-form').serializeArray();
+        var f = JSON.stringify(d);
+        console.log('html -> ' + f);
+        var persona = document.getElementById('author').value;
+        var persona2 = document.getElementById('sub_author').value;
+        var title = document.getElementById('title').value;
+        var info = document.getElementById('info').value;
+        var start = document.getElementById('start').value;
+        var end = document.getElementById('end').value;
+
+
+        swal({
+                title: "Estas seguro de agregar esta informacion?",
+                text: "La informacion que pretendes enviar es\n\n"
+                    +"\nAutor: " +persona
+                    +"\nCo-Autor: " +persona2
+                    +"\nTitulo: " +title
+                    +"\nInformacion: " +info
+                    +"\nFecha inicio: " +start
+                    +"\nFecha fin: "+end,
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-danger",
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "aceptar!",
+                cancelButtonText: "cancel!",
+                closeOnConfirm: true,
+                closeOnCancel: true
+            },
+            function(isConfirm) {
+                if (isConfirm) {
+
+
+                    $.ajax({
+                        url: 'http://localhost:8080/Event/saveEvent',
+                        type: 'POST',
+                        contentType: "application/json; charset=utf-8", //Se enviara JSON al controlador
+                        data: f,
+                        success: function(data){
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 3000
+                            })
+
+                            Toast.fire({
+                                type: 'success',
+                                title: 'Signed in successfully'
+                            })
+                            var persona = document.getElementById('author').value ="";
+                            var persona2 = document.getElementById('sub_author').value="";
+                            var title = document.getElementById('title').value="";
+                            var info = document.getElementById('info').value="";
+                            var start = document.getElementById('start').value="";
+                            var end = document.getElementById('end').value="";
+                        },
+                        error: function(e){
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 3000
+                            })
+
+                            Toast.fire({
+                                type: 'error',
+                                title: 'Signed in successfully'
+                            })
+                        }
+                    });
+
+                }
+            });
+    }
+
+</script>
+
+
+
+
 <header id="header">
-    <div class="header-top">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 col-sm-6 col-6 header-top-left">
-                    <ul>
-                        <li><a href="#">Visit Us</a></li>
-                        <li><a href="#">Buy Tickets</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-6 col-sm-6 col-6 header-top-right">
-                    <div class="header-social">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-dribbble"></i></a>
-                        <a href="#"><i class="fa fa-behance"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <div class="container main-menu">
         <div class="row align-items-center justify-content-between d-flex">
             <div id="logo">
-                <a href="index.html"><img th:src="@{/img/logo.png}" alt="" title="" /></a>
+                <a href="index.html"><img style="width: 145px; height: 30px;" th:src="@{/img/logo110.png}" alt="" title="" /></a>
             </div>
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="packages.html">Packages</a></li>
-                    <li><a href="hotels.html">Hotels</a></li>
-                    <li><a href="insurance.html">Insurence</a></li>
-                    <li class="menu-has-children"><a href="">Blog</a>
+                    <li><a th:href="@{/VicariaSW/Church}" >Inicio</a></li>
+                    <li class="menu-has-children"><a href="">Grupo</a>
                         <ul>
-                            <li><a href="blog-home.html">Blog Home</a></li>
-                            <li><a href="blog-single.html">Blog Single</a></li>
+                            <li sec:authorize="hasRole('ROLE_LIDER')"><a th:href="@{/Group/create}" >Crear Grupo</a></li>
+                            <li><a th:href="@{/Group/}">Ver Grupos</a></li>
                         </ul>
                     </li>
-                    <li class="menu-has-children"><a href="">Pages</a>
+                    <li class="menu-has-children"><a href="">Iglesias</a>
                         <ul>
-                            <li><a href="elements.html">Elements</a></li>
-                            <li class="menu-has-children"><a href="">Level 2 </a>
-                                <ul>
-                                    <li><a href="#">Item One</a></li>
-                                    <li><a href="#">Item Two</a></li>
-                                </ul>
-                            </li>
+                            <li sec:authorize="hasRole('ROLE_LIDER')"><a th:href="@{/Church/create}" >Crear Iglesia</a></li>
+                            <li><a th:href="@{/Church/}">Ver Iglesias</a></li>
                         </ul>
                     </li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">logout</a></li>
+                    <li sec:authorize="!isAuthenticated()"> <a class="btn btn-outline-primary" th:href="@{/login}">Sign in</a></li>
                 </ul>
             </nav><!-- #nav-menu-container -->
         </div>
     </div>
 </header><!-- #header -->
 
-<!-- start banner Area -->
-<section class="banner-area relative blog-home-banner" th:each="group: ${groups}"  id="home">
-    <div class="overlay overlay-bg"></div>
+<!-- Start blog Area -->
+<section class="recent-blog-area section-gap">
     <div class="container">
-        <div class="row d-flex align-items-center justify-content-center">
-            <div class="about-content blog-header-content col-lg-12">
-
+        <div class="row d-flex justify-content-center" th:each="group: ${group}">
+            <div class="menu-content pb-60 col-lg-9">
+                <div class="title text-center">
+                    <h1 class="mb-10"th:text="${group.name}"></h1>
+                    <p th:text="${group.information}"></p>
+                </div>
             </div>
         </div>
     </div>
 </section>
-<!-- End banner Area -->
+<!-- End recent-blog Area -->
 
 
 
-<!-- Start blog Area -->
+<!-- Start blog Area
 <section class="recent-blog-area section-gap">
     <div class="container">
         <div class="row d-flex justify-content-center">
@@ -195,9 +322,293 @@
         </div>
     </div>
 </section>
-<!-- End recent-blog Area -->
+ End recent-blog Area -->
 
 
+<!-- Start post-content Area -->
+<section class="post-content-area">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-60 col-lg-9">
+                <div class="title text-center">
+                    <h1 class="mb-10">Events</h1>
+
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        New Event
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Agregar Evento</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form id="my-form" th:action="@{/Event/saveEvent}" th:object="${event}" method="post" enctype="multipart/form-data">
+                                    <div class="modal-body">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="author" class="col-form-label float-left">Author</label>
+                                                <select class="form-control" id="author" >
+                                                    <option value="" selected>select author</option>
+                                                    <option th:each="us: ${users}" th:value="${us.username}" th:text="${us.username}"></option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+                                                <label for="author" class="col-form-label float-left">Sub Author</label>
+                                                <select class="form-control" id="sub_author" >
+                                                    <option value="" selected>select subauthor</option>
+                                                    <option th:each="us: ${users}" th:value="${us.username}" th:text="${us.username}"></option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="title" class="col-form-label float-left">Title</label>
+                                            <input type="text" name="name" class="form-control" id="title" placeholder="Enter the title">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="info" class="col-form-label float-left">Information</label>
+                                            <textarea type="text" name="information" class="form-control" id="info" placeholder="Enter the event information here!! " rows="3"></textarea>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="start" class="col-form-label float-left">Date Start</label>
+                                                <input type="date" name="date_start" class="form-control" id="start" placeholder="Enter the start date here!! ">
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+                                                <label for="end" class="col-form-label float-left">Date End</label>
+                                                <input type="date" name="date_end" class="form-control" id="end" placeholder="Enter the end date here!! ">
+                                            </div>
+                                        </div>
+
+
+                                       </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary" th:onclick="'ev2();'">Save changes</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 posts-list">
+                <div class="single-post row">
+                    <div class="col-lg-3  col-md-3 meta-details">
+                        <ul class="tags">
+                            <li><a href="#">Food,</a></li>
+                            <li><a href="#">Technology,</a></li>
+                            <li><a href="#">Politics,</a></li>
+                            <li><a href="#">Lifestyle</a></li>
+                        </ul>
+                        <div class="user-details row">
+                            <p class="user-name col-lg-12 col-md-12 col-6"><a href="#">Mark wiens</a> <span class="lnr lnr-user"></span></p>
+                            <p class="date col-lg-12 col-md-12 col-6"><a href="#">12 Dec, 2017</a> <span class="lnr lnr-calendar-full"></span></p>
+                            <p class="view col-lg-12 col-md-12 col-6"><a href="#">1.2M Views</a> <span class="lnr lnr-eye"></span></p>
+                            <p class="comments col-lg-12 col-md-12 col-6"><a href="#">06 Comments</a> <span class="lnr lnr-bubble"></span></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-9 ">
+                        <div class="feature-img">
+                            <img class="img-fluid" th:src="@{/img/blog/feature-img1.jpg}" alt="">
+                        </div>
+                        <a class="posts-title" href="blog-single.html"><h3>Astronomy Binoculars A Great Alternative</h3></a>
+                        <p class="excert">
+                            MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction.
+                        </p>
+                        <a href="blog-single.html" class="primary-btn">View More</a>
+                    </div>
+                </div>
+                <div class="single-post row">
+                    <div class="col-lg-3  col-md-3 meta-details">
+                        <ul class="tags">
+                            <li><a href="#">Food,</a></li>
+                            <li><a href="#">Technology,</a></li>
+                            <li><a href="#">Politics,</a></li>
+                            <li><a href="#">Lifestyle</a></li>
+                        </ul>
+                        <div class="user-details row">
+                            <p class="user-name col-lg-12 col-md-12 col-6"><a href="#">Mark wiens</a> <span class="lnr lnr-user"></span></p>
+                            <p class="date col-lg-12 col-md-12 col-6"><a href="#">12 Dec, 2017</a> <span class="lnr lnr-calendar-full"></span></p>
+                            <p class="view col-lg-12 col-md-12 col-6"><a href="#">1.2M Views</a> <span class="lnr lnr-eye"></span></p>
+                            <p class="comments col-lg-12 col-md-12 col-6"><a href="#">06 Comments</a> <span class="lnr lnr-bubble"></span></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-9 ">
+                        <div class="feature-img">
+                            <img class="img-fluid" th:src="@{/img/blog/feature-img2.jpg}" alt="">
+                        </div>
+                        <a class="posts-title" href="blog-single.html"><h3>The Basics Of Buying A Telescope</h3></a>
+                        <p class="excert">
+                            MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction.
+                        </p>
+                        <a href="blog-single.html" class="primary-btn">View More</a>
+                    </div>
+                </div>
+                <div class="single-post row">
+                    <div class="col-lg-3  col-md-3 meta-details">
+                        <ul class="tags">
+                            <li><a href="#">Food,</a></li>
+                            <li><a href="#">Technology,</a></li>
+                            <li><a href="#">Politics,</a></li>
+                            <li><a href="#">Lifestyle</a></li>
+                        </ul>
+                        <div class="user-details row">
+                            <p class="user-name col-lg-12 col-md-12 col-6"><a href="#">Mark wiens</a> <span class="lnr lnr-user"></span></p>
+                            <p class="date col-lg-12 col-md-12 col-6"><a href="#">12 Dec, 2017</a> <span class="lnr lnr-calendar-full"></span></p>
+                            <p class="view col-lg-12 col-md-12 col-6"><a href="#">1.2M Views</a> <span class="lnr lnr-eye"></span></p>
+                            <p class="comments col-lg-12 col-md-12 col-6"><a href="#">06 Comments</a> <span class="lnr lnr-bubble"></span></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-9">
+                        <div class="feature-img">
+                            <img class="img-fluid" th:src="@{/img/blog/feature-img3.jpg}" alt="">
+                        </div>
+                        <a class="posts-title" href="blog-single.html"><h3>The Glossary Of Telescopes</h3></a>
+                        <p class="excert">
+                            MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction.
+                        </p>
+                        <a href="blog-single.html" class="primary-btn">View More</a>
+                    </div>
+                </div>
+                <nav class="blog-pagination justify-content-center d-flex">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a href="#" class="page-link" aria-label="Previous">
+		                                    <span aria-hidden="true">
+		                                        <span class="lnr lnr-chevron-left"></span>
+		                                    </span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a href="#" class="page-link">01</a></li>
+                        <li class="page-item active"><a href="#" class="page-link">02</a></li>
+                        <li class="page-item"><a href="#" class="page-link">03</a></li>
+                        <li class="page-item"><a href="#" class="page-link">04</a></li>
+                        <li class="page-item"><a href="#" class="page-link">09</a></li>
+                        <li class="page-item">
+                            <a href="#" class="page-link" aria-label="Next">
+		                                    <span aria-hidden="true">
+		                                        <span class="lnr lnr-chevron-right"></span>
+		                                    </span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-4 sidebar-widgets">
+                <div class="widget-wrap">
+                    <div class="single-sidebar-widget search-widget">
+                        <form class="search-form" action="#">
+                            <input placeholder="Search Posts" name="search" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'" >
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                    <div class="single-sidebar-widget popular-post-widget">
+                        <h4 class="popular-title">Popular Posts</h4>
+                        <div class="popular-post-list">
+                            <div class="single-post-list d-flex flex-row align-items-center">
+                                <div class="thumb">
+                                    <img class="img-fluid" th:src="@{/img/blog/pp1.jpg}" alt="">
+                                </div>
+                                <div class="details">
+                                    <a href="blog-single.html"><h6>Space The Final Frontier</h6></a>
+                                    <p>02 Hours ago</p>
+                                </div>
+                            </div>
+                            <div class="single-post-list d-flex flex-row align-items-center">
+                                <div class="thumb">
+                                    <img class="img-fluid" th:src="@{/img/blog/pp2.jpg}" alt="">
+                                </div>
+                                <div class="details">
+                                    <a href="blog-single.html"><h6>The Amazing Hubble</h6></a>
+                                    <p>02 Hours ago</p>
+                                </div>
+                            </div>
+                            <div class="single-post-list d-flex flex-row align-items-center">
+                                <div class="thumb">
+                                    <img class="img-fluid" th:src="@{/img/blog/pp3.jpg}" alt="">
+                                </div>
+                                <div class="details">
+                                    <a href="blog-single.html"><h6>Astronomy Or Astrology</h6></a>
+                                    <p>02 Hours ago</p>
+                                </div>
+                            </div>
+                            <div class="single-post-list d-flex flex-row align-items-center">
+                                <div class="thumb">
+                                    <img class="img-fluid" th:src="@{/img/blog/pp4.jpg}" alt="">
+                                </div>
+                                <div class="details">
+                                    <a href="blog-single.html"><h6>Asteroids telescope</h6></a>
+                                    <p>02 Hours ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single-sidebar-widget post-category-widget">
+                        <h4 class="category-title">Post Catgories</h4>
+                        <ul class="cat-list">
+                            <li>
+                                <a href="#" class="d-flex justify-content-between">
+                                    <p>Technology</p>
+                                    <p>37</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="d-flex justify-content-between">
+                                    <p>Lifestyle</p>
+                                    <p>24</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="d-flex justify-content-between">
+                                    <p>Fashion</p>
+                                    <p>59</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="d-flex justify-content-between">
+                                    <p>Art</p>
+                                    <p>29</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="d-flex justify-content-between">
+                                    <p>Food</p>
+                                    <p>15</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="d-flex justify-content-between">
+                                    <p>Architecture</p>
+                                    <p>09</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="d-flex justify-content-between">
+                                    <p>Adventure</p>
+                                    <p>44</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End post-content Area -->
 
 
 <!-- start footer Area -->
@@ -300,6 +711,7 @@
 <script th:src="@{/js/jquery.ajaxchimp.min.js}"></script>
 <script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
 <script th:src="@{/js/owl.carousel.min.js}"></script>
+<script th:src="@{/js/sweetalert.min.js}"></script>
 <script th:src="@{/js/main.js}"></script>
 </body>
 </html>
