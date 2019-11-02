@@ -3,6 +3,8 @@ package com.sort.capas.swvicaria.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -46,7 +48,12 @@ public class User {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="r_id")
+    //@Fetch(FetchMode.JOIN)
     private Role role;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="t_id")
+    private Group group;
 
     public User(String username, String password) {
         this.username = username;

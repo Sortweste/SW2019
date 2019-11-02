@@ -45,4 +45,7 @@ public class Group {
     @JoinColumn(name = "c_id")
     private Church church;
 
+    @OneToMany(mappedBy = "group", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<User> users;
+
 }
