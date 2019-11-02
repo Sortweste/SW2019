@@ -4,6 +4,7 @@ package com.sort.capas.swvicaria.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -32,12 +33,16 @@ public class Event {
     @Column(name = "e_subauthor")
     private String sub_author;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "e_date")
     private Date date_start;
 
     @Column(name = "e_time")
     private String time;
 
+    @Column(name = "e_persona")
+    private String persona;
+
     @Column(name = "e_cost")
-    private Integer cost;
+    private double cost;
 }

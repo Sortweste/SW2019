@@ -103,15 +103,15 @@
             });
     }
     function ev2(){
-        var d = $('#my-form').serializeArray();
-        var f = JSON.stringify(d);
-        console.log('html -> ' + f);
         var persona = document.getElementById('author').value;
         var persona2 = document.getElementById('sub_author').value;
+        var persona3 = document.getElementById('persona').value;
+        var cost = document.getElementById('cost').value;
         var title = document.getElementById('title').value;
         var info = document.getElementById('info').value;
         var start = document.getElementById('start').value;
-        var end = document.getElementById('time').value;
+        var hora = document.getElementById('hora').value;
+        var end = document.getElementById('time').value +" "+hora;
 
 
         swal({
@@ -119,10 +119,12 @@
                 text: "La informacion que pretendes enviar es\n\n"
                     +"\nAutor: " +persona
                     +"\nCo-Autor: " +persona2
+                    +"\nEncargado: " +persona3
+                    +"\nCosto: " +cost
                     +"\nTitulo: " +title
                     +"\nInformacion: " +info
                     +"\nFecha inicio: " +start
-                    +"\nFecha fin: "+end,
+                    +"\nhora: "+end,
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-danger",
@@ -138,10 +140,7 @@
 
 
                     $.ajax({
-                        url: 'http://localhost:8080/Event/saveEvent',
-                        type: 'POST',
-                        contentType: "application/json; charset=utf-8", //Se enviara JSON al controlador
-                        data: f,
+                        url: 'http://localhost:8080/Event/saveEvent?author='+persona+'&sub_author='+persona2+'&persona='+persona3+'&title='+title+'&info='+info+'&date='+start+'&time='+end+'&cost='+cost,
                         success: function(data){
                             const Toast = Swal.mixin({
                                 toast: true,
@@ -156,10 +155,13 @@
                             })
                             var persona = document.getElementById('author').value ="";
                             var persona2 = document.getElementById('sub_author').value="";
+                            var persona3 = document.getElementById('persona').value="";
+                            var cost = document.getElementById('cost').value="";
                             var title = document.getElementById('title').value="";
                             var info = document.getElementById('info').value="";
                             var start = document.getElementById('start').value="";
                             var end = document.getElementById('time').value="";
+                            var hora = document.getElementById('hora').value="";
                         },
                         error: function(e){
                             const Toast = Swal.mixin({
@@ -409,8 +411,8 @@
                         New Event
                     </button>
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
+                    <div class="modal fade bd-example-modal-lg" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel2">Agregar Evento</h5>
@@ -418,7 +420,7 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <form id="my-form" th:action="@{/Event/saveEvent}" th:object="${event}" method="post" enctype="multipart/form-data">
+                                <form id="my-form" th:action="@{/Event/saveEvent}" th:object="${event}" method="post" >
                                     <div class="modal-body">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
@@ -438,10 +440,24 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="title" class="col-form-label float-left">Title</label>
-                                            <input type="text" name="title" class="form-control" id="title" placeholder="Enter the title">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                  <label for="persona" class="col-form-label float-left">Dirigente del evento</label>
+                                                  <input type="text" name="persona" class="form-control" id="persona" placeholder="Enter the title">
+                                            </div>
+
+                                            <div class="form-group col-md-2">
+                                                <label for="cost" class="col-form-label float-left">Price</label>
+                                                <input type="number" min="0" name="cost" class="form-control" id="cost" placeholder="$">
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+                                                  <label for="title" class="col-form-label float-left">Title</label>
+                                                <textarea type="text" name="title" class="form-control" id="title" placeholder="Enter the event title here!! " rows="2"></textarea>
+                                             </div>
                                         </div>
+
+
 
                                         <div class="form-group">
                                             <label for="info" class="col-form-label float-left">Information</label>
@@ -455,13 +471,13 @@
                                             </div>
 
                                             <div class="form-group col-md-4">
-                                                <label for="time" class="col-form-label float-left">Date End</label>
+                                                <label for="time" class="col-form-label float-left">Time</label>
                                                 <input type="time" name="time" class="form-control" id="time">
                                             </div>
 
                                             <div class="form-group col-md-4">
-                                                <label for="horario" class="col-form-label float-left">Horario</label>
-                                                <select class="form-control" id="horario" >
+                                                <label for="hora" class="col-form-label float-left">Horario</label>
+                                                <select class="form-control" id="hora" >
                                                     <option value="" selected>select horario</option>
                                                     <option value="AM" >    AM</option>
                                                     <option value="PM" >    PM</option>
@@ -488,7 +504,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-8 posts-list">
+            <div class="col-lg-12 posts-list">
                 <div class="single-post row">
                     <div class="col-lg-3  col-md-3 meta-details">
                         <ul class="tags">
@@ -590,104 +606,6 @@
                         </li>
                     </ul>
                 </nav>
-            </div>
-            <div class="col-lg-4 sidebar-widgets">
-                <div class="widget-wrap">
-                    <div class="single-sidebar-widget search-widget">
-                        <form class="search-form" action="#">
-                            <input placeholder="Search Posts" name="search" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'" >
-                            <button type="submit"><i class="fa fa-search"></i></button>
-                        </form>
-                    </div>
-                    <div class="single-sidebar-widget popular-post-widget">
-                        <h4 class="popular-title">Popular Posts</h4>
-                        <div class="popular-post-list">
-                            <div class="single-post-list d-flex flex-row align-items-center">
-                                <div class="thumb">
-                                    <img class="img-fluid" th:src="@{/img/blog/pp1.jpg}" alt="">
-                                </div>
-                                <div class="details">
-                                    <a href="blog-single.html"><h6>Space The Final Frontier</h6></a>
-                                    <p>02 Hours ago</p>
-                                </div>
-                            </div>
-                            <div class="single-post-list d-flex flex-row align-items-center">
-                                <div class="thumb">
-                                    <img class="img-fluid" th:src="@{/img/blog/pp2.jpg}" alt="">
-                                </div>
-                                <div class="details">
-                                    <a href="blog-single.html"><h6>The Amazing Hubble</h6></a>
-                                    <p>02 Hours ago</p>
-                                </div>
-                            </div>
-                            <div class="single-post-list d-flex flex-row align-items-center">
-                                <div class="thumb">
-                                    <img class="img-fluid" th:src="@{/img/blog/pp3.jpg}" alt="">
-                                </div>
-                                <div class="details">
-                                    <a href="blog-single.html"><h6>Astronomy Or Astrology</h6></a>
-                                    <p>02 Hours ago</p>
-                                </div>
-                            </div>
-                            <div class="single-post-list d-flex flex-row align-items-center">
-                                <div class="thumb">
-                                    <img class="img-fluid" th:src="@{/img/blog/pp4.jpg}" alt="">
-                                </div>
-                                <div class="details">
-                                    <a href="blog-single.html"><h6>Asteroids telescope</h6></a>
-                                    <p>02 Hours ago</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-sidebar-widget post-category-widget">
-                        <h4 class="category-title">Post Catgories</h4>
-                        <ul class="cat-list">
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Technology</p>
-                                    <p>37</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Lifestyle</p>
-                                    <p>24</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Fashion</p>
-                                    <p>59</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Art</p>
-                                    <p>29</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Food</p>
-                                    <p>15</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Architecture</p>
-                                    <p>09</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Adventure</p>
-                                    <p>44</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

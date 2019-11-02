@@ -7,6 +7,7 @@ import java.text.ParseException;
 
 public interface IEventService {
 
-    public Event save(FormDTO[] dto) throws ParseException;
+    // public Event save(FormDTO[] dto) throws ParseException;
+    public Event save(Event e) throws ParseException;
 
 }

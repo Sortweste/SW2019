@@ -18,7 +18,7 @@ import java.util.Date;
 public class EventServiceImpl implements IEventService {
     @Autowired
     IEventRepository ieventRepository;
-
+    /*
     @Override
     @Transactional
     public Event save(FormDTO[] dto) throws ParseException {
@@ -28,6 +28,7 @@ public class EventServiceImpl implements IEventService {
         for(FormDTO d : dto) {
             if (d.getName().equals("author")) e.setAuthor(d.getValue());
             if (d.getName().equals("sub_author")) e.setSub_author(d.getValue());
+            if (d.getName().equals("persona")) e.setPersona(d.getValue());
             if (d.getName().equals("title")) e.setTitle(d.getValue());
             if (d.getName().equals("info")) e.setInformation(d.getValue());
             if (d.getName().equals("start")) {
@@ -41,9 +42,16 @@ public class EventServiceImpl implements IEventService {
                 e.setTime(time);
             };
 
+
         }
 
 
+        return ieventRepository.save(e);
+    }*/
+
+    @Override
+    @Transactional
+    public Event save(Event e) throws ParseException {
         return ieventRepository.save(e);
     }
 }
