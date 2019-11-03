@@ -54,6 +54,7 @@ public class ChurchServiceImpl implements IChurchService {
     }
 
     @Override
+    @Transactional
     public Church saveE(Church church, MultipartFile foto) {
         Church iglesia=churchRepository.findChurchById(church.getId());
         if(!foto.isEmpty()){
