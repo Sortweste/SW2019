@@ -68,6 +68,11 @@ public class ControllerTest {
         return "404";
     }*/
 
+    @GetMapping("/admin")
+    public String adminModule(){
+        return "adminPages/index";
+    }
+
     @GetMapping("/error500")
     public String error500(Model model) {
         return "500";
