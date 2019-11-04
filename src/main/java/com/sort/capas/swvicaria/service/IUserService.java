@@ -8,4 +8,8 @@ public interface IUserService {
     List<User> findAll();
     User findUserByName(String name);
     User findUserById(Long id);
+    User becomeMember(Long id);
+    User becomeLeader(Long id);
+    User becomeUser(Long id);
 }
+

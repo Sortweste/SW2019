@@ -2,6 +2,7 @@ package com.sort.capas.swvicaria.controller;
 
 import com.sort.capas.swvicaria.domain.Church;
 import com.sort.capas.swvicaria.service.IChurchService;
+import com.sort.capas.swvicaria.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,9 @@ public class ControllerTest {
 
     @Autowired
     IChurchService iChurchService;
+
+    @Autowired
+    IUserService UserService;
 
     @GetMapping("/form")
     public String formTest(){
@@ -77,5 +81,27 @@ public class ControllerTest {
     public String error500(Model model) {
         return "500";
     }
+
+    @GetMapping("/Member")
+    public String member(Model model) {
+        long var=2;
+        UserService.becomeMember(var);
+        return "group";
+    }
+
+    @GetMapping("/User")
+    public String user(Model model) {
+        long var=2;
+        UserService.becomeUser(var);
+        return "group";
+    }
+
+    @GetMapping("/Leader")
+    public String leader(Model model) {
+        long var=2;
+        UserService.becomeLeader(var);
+        return "group";
+    }
+
 }
 
