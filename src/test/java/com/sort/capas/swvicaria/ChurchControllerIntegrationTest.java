@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 //Fire up an application context that contains only the beans needed for testing a web controller:
 @WebMvcTest(ChurchController.class)
-public class ChurchControllerIntegrationTest {
+public class                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ChurchControllerIntegrationTest {
 
     @Autowired
     MockMvc mockMvc;    //Simulates HTTP Requests
