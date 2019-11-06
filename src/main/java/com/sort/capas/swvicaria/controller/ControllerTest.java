@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,6 +70,11 @@ public class ControllerTest {
     public String error404(Model model) {
         return "404";
     }*/
+
+    @GetMapping("/admin")
+    public String adminModule(){
+        return "adminDashboard";
+    }
 
     @GetMapping("/error500")
     public String error500(Model model) {
