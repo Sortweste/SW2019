@@ -1,8 +1,10 @@
 package com.sort.capas.swvicaria;
 
 import com.sort.capas.swvicaria.domain.User;
+import com.sort.capas.swvicaria.repository.IRoleRepository;
 import com.sort.capas.swvicaria.repository.IUserRepository;
 import com.sort.capas.swvicaria.service.IUserService;
+import com.sort.capas.swvicaria.service.RoleServiceImpl;
 import com.sort.capas.swvicaria.service.UserServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
@@ -19,11 +21,14 @@ import java.util.List;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = {UserServiceImpl.class})
+@ContextConfiguration(classes = {UserServiceImpl.class, RoleServiceImpl.class})
 public class UserRepositoryIntegrationTest {
 
     @Autowired
     private IUserService userService;
+
+    @MockBean
+    IRoleRepository roleRepository;
 
     @MockBean
     private IUserRepository userRepository;
