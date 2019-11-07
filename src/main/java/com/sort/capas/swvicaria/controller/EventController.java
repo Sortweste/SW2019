@@ -51,7 +51,7 @@ public class EventController {
         e.setCost(cost);
 
 
-        Event event = ieventService.save(e);
+        ieventService.save(e);
 
         return new ResponseEntity<>("hola", HttpStatus.CREATED);
     }

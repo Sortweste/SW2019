@@ -24,8 +24,7 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
@@ -61,11 +60,12 @@ public class ChurchControllerIntegrationTest {
         churches.add(church1);
         churches.add(church2);
 
-        MultipartFile foto = new MockMultipartFile("a","b","c","d".getBytes());
+        MultipartFile foto = new MockMultipartFile("foto","b","c","d".getBytes());
 
         when(iChurchService.findAll()).thenReturn(churches);
         when(iChurchService.save(church1, foto)).thenReturn(church1);
         when(iChurchService.findChurchById((long)1)).thenReturn(church1);
+        when(iChurchService.save(new Church(),foto)).thenReturn(church2);
     }
 
     @Test
@@ -107,6 +107,42 @@ public class ChurchControllerIntegrationTest {
                 .andExpect(status().isOk());
 
         verify(iChurchService, times(1)).findChurchById((long)1);
+    }
+
+    @Test
+    @WithMockUser(username = "admin", roles = {"LIDER"})
+    public void  whenSaveChurchFromService_thenReturnStatus() throws Exception{
+        Church church = new Church();
+        church.setId((long) 2);
+
+        MockMultipartFile foto = new MockMultipartFile("foto","b","c","d".getBytes());
+
+        mockMvc.perform(multipart("/Church/saveChurch")
+                .file(foto)
+                .flashAttr("church", church)
+        )
+                .andDo(print())
+                .andExpect(status().is3xxRedirection());
+
+        verify(iChurchService, times(1)).save(church, foto);
+    }
+
+    @Test
+    @WithMockUser(username = "admin", roles = {"LIDER"})
+    public void  whenSaveChurchEFromService_thenReturnStatus() throws Exception{
+        Church church = new Church();
+        church.setId((long) 2);
+
+        MockMultipartFile foto = new MockMultipartFile("foto","b","c","d".getBytes());
+
+        mockMvc.perform(multipart("/Church/modifyChurch")
+                .file(foto)
+                .flashAttr("church", church)
+        )
+                .andDo(print())
+                .andExpect(status().is3xxRedirection());
+
+        verify(iChurchService, times(1)).save(church, foto);
     }
 
 }
