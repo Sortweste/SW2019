@@ -6,6 +6,7 @@ install:
 - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 deploy:
   provider: heroku
+  skip_cleanup: true
   api_key:
       secure: "n/eY/miWjPHAP08HPt4mpmULSg40i009fbnNP31lQjpA9FwQmQINGLxIDs1PMuGp6su2cD06NzM4KxQD/vdRSU8G7Jt+YCar4fxNuybJPqeHNCmD55/Zcjz6YNXcHPTOm3t2DjlCS/3e5RZD4KKbC/ULJqTTIGBJbqs01WCFxLzDYf9B8lzT+AeQCDvI3CbgcrYVXjUOiSTVWcFRp/I9xF/XWB54oGqYm2wli/OMgw/5sY+5CE/At6dl6VrPX+zfIk1oLwDsZmMd4eNyEf8q6DQxyW+iHFvpuy7hUgnws2iqsCqS89C3rm8L3Ui01jR832xS1f5kwut/PLei0uN7TVuD9qGB0fMmb/kaPFl/wc0JVFthAy54leAZdyUBoxLw1K1a/GZoxarxegCGmsIqsbdtReeb3DeP2kCfKLi5TBMLqNMOAXl0tZNbkcKAf4ak2ruFDdOLD+DXnJrwhCDJFi4niphfhb4Umo8LQ55WVjaUbdHKIgfMJKLoRc2fMepHaWWnxbCpAelsYz3Z0FNg5KW0NnlRgz2EQqk09ZOIAI3clZb7VDa082lNNcIkhB1tW2PX8AnwoFgjvQQhnuxLwCqb7PfaDkyz9JdXPNnIZTwwTgYHZ1ORat4hAB2wB1PxAm9yRt7QcqtfBjWJiBWc2ACMGOYPRXC6W4gBRi7/rAE="
   app: sw-vicaria
