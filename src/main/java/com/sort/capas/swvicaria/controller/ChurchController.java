@@ -54,7 +54,7 @@ public class ChurchController{
     @Secured("ROLE_LIDER")
     @PostMapping("/modifyChurch")
     public String saveEChurch(@ModelAttribute("church") Church church, @RequestParam("foto") MultipartFile foto){
-        churchService.saveE(church, foto);
+        churchService.save(church, foto);
         return "redirect:/";
     }
 

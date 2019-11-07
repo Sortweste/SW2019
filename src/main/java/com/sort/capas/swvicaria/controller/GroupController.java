@@ -4,7 +4,6 @@ import com.sort.capas.swvicaria.domain.Church;
 import com.sort.capas.swvicaria.domain.Group;
 import com.sort.capas.swvicaria.DTO.ChurchGroupDTO;
 import com.sort.capas.swvicaria.domain.User;
-import com.sort.capas.swvicaria.helperClass.FetchGroupsByChurch;
 import com.sort.capas.swvicaria.service.IChurchService;
 import com.sort.capas.swvicaria.service.IGroupService;
 import com.sort.capas.swvicaria.service.IUserService;
