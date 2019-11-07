@@ -157,6 +157,11 @@
                                     </limits>
                                 </rule>
                             </rules>
+                            <excludes>
+                                <exclude>**/*com/sort/capas/swvicaria/configuration/**</exclude>
+                                <exclude>**/*com/sort/capas/swvicaria/domain/**</exclude>
+                                <exclude>**/*com/sort/capas/swvicaria/DTO/**</exclude>
+                            </excludes>
                         </configuration>
                     </execution>
                 </executions>

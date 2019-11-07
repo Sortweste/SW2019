@@ -2,6 +2,7 @@ package com.sort.capas.swvicaria;
 
 import com.sort.capas.swvicaria.controller.ChurchController;
 import com.sort.capas.swvicaria.service.IChurchService;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,12 +19,12 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
-@RunWith(SpringRunner.class)
+//@RunWith(SpringRunner.class)
 //Fire up an application context that contains only the beans needed for testing a web controller:
-@WebMvcTest(ChurchController.class)
+//@WebMvcTest(ChurchController.class)
 public class ChurchControllerIntegrationTest {
 
-    @Autowired
+    /*@Autowired
     MockMvc mockMvc;    //Simulates HTTP Requests
 
     @MockBean
@@ -36,11 +37,11 @@ public class ChurchControllerIntegrationTest {
 
     @Test
     public void whenGetAllChurchsFromService_thenReturnJSON() throws Exception {
-        mockMvc.perform(
+        /*mockMvc.perform(
                 get("/Test/GetAllChurchs")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].name").value(is("")));
-    }
+    }*/
 
 }

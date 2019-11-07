@@ -9,5 +9,5 @@ public interface IChurchService {
     List<Church> findAll();
     Church findChurchById(Long id);
     Church save(Church church, MultipartFile foto);
-    Church saveE(Church church, MultipartFile foto);
+
 }
