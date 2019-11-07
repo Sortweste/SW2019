@@ -10,7 +10,3 @@ deploy:
   api_key:
         secure: "q7VU5v6rWRL8xansCDMY/Pqe9NGeiNMnEkhqYUXjyKsbFKeLackneAmXT3bUXCQZL89VUUk0v9BuMXdHbvUAkf4te/uGB2h95ZYLRkcMHfwEhIoqWKAw1H7r7SeWxK2WuHrX4wX5C2hy8nlzPdwABKlziUnth0ehgdyFOe+aw7fQ26TBWg27pqDOyC+RY/OS+mRjM3a4HxBBeUonYExjUVWOWuJitI7eKZf37NcYm5jJinrFgCEywZPIu7xS7DQkngttVxwX/FfxBnC1dQhWpqemN/VNud4LqfK11UukWH3f27BJLlNkVIfIveaV4hluxkE35UH9LRS3dgX+HJBAOXo4ch3a5MN5CIiBmYi+W62znTs2plpG2+cdNm18wv8qoTruHok81C90/u7jKM5h1ySFjNVURM6+0eIpevZzkauv0t1GijN2xngwPdM/1vEh/zoHEGoLvc3s/VymN7GdYdNTJRg21N53VUcw7d4RVUeh4resdkt+Ir9CZpzyaM3PEJTcWB3j+n77FhODFcxsOKOWA3cPcihL1DAdCe0n6yRZz/JAzGdZnVsm2YGzXGu24YlQhUcCdDvNNDZcEislSKpyaiAsYSB52xW0PIEkViIFUDnHI10SnS2HiNn+gDEx6EAbaWpY1O/shKpqTYtNtmLclE6uhXqu0ISnoOv3/z4="
   app: sw-vicaria
-  on:
-    repo: Sortweste/SW2019
-    production: sw-vicaria-production
-    all_branches: true
