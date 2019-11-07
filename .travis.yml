@@ -11,3 +11,4 @@ deploy:
   app: sw-vicaria
   on:
     repo: Sortweste/SW2019
+    all_branches: true
