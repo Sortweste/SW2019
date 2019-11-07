@@ -35,10 +35,6 @@ public class GroupController {
         return "church";
     }
 
-    @GetMapping("/Test")
-    public String initTest(){
-        return "church";
-    }
 
     @Secured("ROLE_LIDER")
     @GetMapping("/create")

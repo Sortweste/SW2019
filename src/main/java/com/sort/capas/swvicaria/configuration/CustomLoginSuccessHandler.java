@@ -1,4 +1,4 @@
-package com.sort.capas.swvicaria.controller;
+package com.sort.capas.swvicaria.configuration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
