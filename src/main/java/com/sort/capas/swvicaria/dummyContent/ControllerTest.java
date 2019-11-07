@@ -1,4 +1,4 @@
-package com.sort.capas.swvicaria.controller;
+package com.sort.capas.swvicaria.dummyContent;
 
 import com.sort.capas.swvicaria.domain.Church;
 import com.sort.capas.swvicaria.service.IChurchService;

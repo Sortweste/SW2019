@@ -18,8 +18,6 @@ public class MainController {
     }
 
     @GetMapping("VicariaSW/Church")
-    public String churchController(){
-        return "forward:/Church/";
-    }
+    public String churchController(){ return "forward:/Church/"; }
 
 }

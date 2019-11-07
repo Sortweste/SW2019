@@ -1,12 +1,10 @@
 package com.sort.capas.swvicaria;
 
 import com.sort.capas.swvicaria.controller.ChurchController;
-import com.sort.capas.swvicaria.controller.CustomLoginSuccessHandler;
+import com.sort.capas.swvicaria.configuration.CustomLoginSuccessHandler;
 import com.sort.capas.swvicaria.domain.Church;
-import com.sort.capas.swvicaria.repository.IChurchRepository;
 import com.sort.capas.swvicaria.service.IChurchService;
 import com.sort.capas.swvicaria.service.JpaUserDetailsService;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,10 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.web.multipart.MultipartFile;
 
 
 import java.util.ArrayList;
@@ -26,6 +25,7 @@ import java.util.List;
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
@@ -61,7 +61,11 @@ public class ChurchControllerIntegrationTest {
         churches.add(church1);
         churches.add(church2);
 
+        MultipartFile foto = new MockMultipartFile("a","b","c","d".getBytes());
+
         when(iChurchService.findAll()).thenReturn(churches);
+        when(iChurchService.save(church1, foto)).thenReturn(church1);
+        when(iChurchService.findChurchById((long)1)).thenReturn(church1);
     }
 
     @Test
@@ -77,4 +81,32 @@ public class ChurchControllerIntegrationTest {
 
         verify(iChurchService, times(1)).findAll();
     }
+
+    @Test
+    @WithMockUser(username = "admin", roles = {"LIDER"})
+    public void whenAddChurchFromService_thenReturnStatus() throws Exception {
+        List<Church> churches = new ArrayList<>();
+        mockMvc.perform(
+                get("/Church/create")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+    }
+
+
+    @Test
+    @WithMockUser(username = "admin", roles = {"LIDER"})
+    public void whenEditChurchFromService_thenReturnStatus() throws Exception {
+
+        mockMvc.perform(
+                post("/Church/edit")
+                        .contentType(MediaType.APPLICATION_JSON)
+                .param("id", String.valueOf(1))
+                )
+                .andDo(print())
+                .andExpect(status().isOk());
+
+        verify(iChurchService, times(1)).findChurchById((long)1);
+    }
+
 }
