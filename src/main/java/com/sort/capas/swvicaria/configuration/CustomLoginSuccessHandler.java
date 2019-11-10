@@ -42,7 +42,7 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
 
         //redireccionando en base al rol
         if(roles.contains("ROLE_LIDER")){
-            url = "/Church/create"; // lo tire ahi porque nose cual es la vista de admin :V
+            url = "/Admin/Church";
         }
         //puede cambiar
         else if(roles.contains("ROLE_USUARIO") || roles.contains("ROLE_MIEMBRO")){
