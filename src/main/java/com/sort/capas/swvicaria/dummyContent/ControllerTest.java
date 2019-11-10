@@ -22,6 +22,8 @@ public class ControllerTest {
     @Autowired
     IUserService UserService;
 
+    //Delete this in the next Sprint!
+
     @GetMapping("/form")
     public String formTest(){
         return "churchform" ;
