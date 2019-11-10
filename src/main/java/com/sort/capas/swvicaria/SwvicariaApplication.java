@@ -29,7 +29,7 @@ public class SwvicariaApplication implements CommandLineRunner {
 
         for(int i = 0; i < 3; i++){
             String bpass = passwordEncoder2().encode(pass);
-            System.out.println(bpass);
+//            System.out.println(bpass);
         }
     }
 }

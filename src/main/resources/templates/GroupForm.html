@@ -1,70 +1,106 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:id="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="ISO-8859-1">
+    <meta charset="UTF-8" />
     <title>Agregar Grupo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="stylesheet" th:href="@{/css/addChurch.css}">
-    <!-- vinculo a bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <!-- se vincula al hoja de estilo para definir el aspecto del formulario de login-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
 </head>
-<body bgcolor="#00000" style="background-color:#240463;">
-<div id="Contenedor">
 
-    <form th:action="@{/Group/saveGroup}" th:object="${group}" method="post">
-        <h1 style="font-weight: bold; margin: auto">Datos del grupo:</h1>
-        <div class="ContentForm">
-        <br>
-            <!--
-            <div class="input-group input-group-lg">
-                <span th:text="#{form.group.name}" class="input-group-addon" id="sizing-addon1">Nombre</span>
-                <input type="text" th:field="*{name}" class="form-control" />
-            </div>
+<body class="p-2 px-3 bg-dark">
 
 
-            <br>
-            <div class="input-group input-group-lg">
-                <span th:text="#{form.group.info}" class="input-group-addon" id="sizing-addon1">Informacion</span>
+<div class="d-flex flex-row justify-content-center h-100">
 
-            </div>
-            <textarea class="form-control" th:field="*{information}" name="historia" cols="40" rows="5"></textarea>
+    <div class="col-md-7 col-sm-6 shadow rounded mt-4 mb-5 bg-white mr-2 flex-column py-3 px-5">
 
-            <br>
-            <div class="input-group input-group-lg">
-                <span class="input-group-addon" th:text="#{form.group.time}" id="sizing-addon1">Horario</span>
-                <input type="date"  th:field="*{schedule}" class="form-control" />
-            </div>
--->
-            <br>
+        <h2 class="text-center">Datos del Grupo</h2>
 
+        <h6 class="text-center mb-4">Ingrese los datos en los respectivos campos, seleccione una imagen desde su galería</h6>
 
-            <!-- <div class="input-group input-group-lg">
-                 <span class="input-group-addon" th:text="#{form.group.church}" id="sizing-addon1">Church</span>
-                 <select name="id" id="id">
-                     <th:block th:each="church : ${group.church}">
-                     <option th:value="${group.church.name}" th:text="Male"></option>
-                     <option th:value="'F'" th:text="Female"></option>
-                 </select>
+        <div>
 
-             </div> -->
+            <form id="newGroup" th:action="@{/Group/saveGroup}" th:object="${group}" method="post" enctype="multipart/form-data">
 
-            <div class="col">
-                <label for="id">Asignar parroquia:</label>
-                <select id="id" th:name="id" class="form-control" style="width: 350px">
-                    <option th:each="p: ${group.church}"
-                            th:if="${p.name != null}" th:value="${p.id}"
-                            th:text="${p.name}"></option>
-                </select>
-            </div>
+                <input th:field="*{id}" id="id" th:value="${group.id}" class="form-control" type="hidden" />
+
+                <div class="row mb-3">
+                    <div class="col-md-7">
+                        <label for="name" th:text="#{form.group.name}"></label>
+                        <input id="name" type="text" th:field="*{name}" class="form-control" />
+                    </div>
+                </div>
 
 
-             <button class="btn btn-lg btn-primary btn-block btn-signin" id="IngresoLog" type="submit" style="margin: auto">Entrar</button>
+                <div class="row mb-6 px-3">
+                        <label for="info" th:text="#{form.group.info}"></label>
+                        <textarea id="info" th:field="*{information}"  style="resize:none" class="form-control" name="info" cols="40" rows="5"></textarea>
+                </div>
 
 
-         </div>
-     </form>
- </div>
- </body>
- </html>
+                <div class="row mb-3">
+
+                    <div class="col-md-3">
+                        <label for="scheduleDay" th:text="#{form.group.day}" ></label>
+                        <input type="time" id="scheduleDay" th:field="*{schedule}" class="form-control" step="1800" min="7:00" max="21:00"/>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="scheduleStart" th:text="#{form.group.startTime}" ></label>
+                        <input type="time" id="scheduleStart" th:field="*{schedule}" class="form-control" step="1800" min="7:00" max="21:00"/>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="scheduleEnd" th:text="#{form.group.endTime}" ></label>
+                        <input type="time" id="scheduleEnd" th:field="*{schedule}" class="form-control" step="1800" min="7:00" max="21:00"/>
+                    </div>
+                </div>
+
+                <!---
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="foto">Subir Imagen:</label>
+                        <input id="foto" name="foto" th:value="${church.img}"class="form-control" style="width: 400px"  type="file"/>
+                    </div>
+                </div>
+                -->
+
+                <div class="row mb-3">
+                    <div class="col-md-7">
+                        <label for="Churchid" th:text="#{form.group.church}" ></label>
+                        <select id="Churchid" th:name="Churchid" class="form-control" style="width: 350px">
+                            <option th:each="p: ${group.church}"
+                                    th:if="${p.name != null}" th:value="${p.id}"
+                                    th:text="${p.name}"></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3 justify-content-center">
+                    <input type="submit" id="botonenviar" class="btn btn-success shadow my-3" value="Guardar">
+                </div>
+
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+
+</body>
+</html>
