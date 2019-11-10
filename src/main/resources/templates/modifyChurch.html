@@ -11,10 +11,20 @@
 
 <body class="p-2 px-3 bg-dark">
 
+<!--Aqui manejaremos el submit del formulario-->
+<script type="text/javascript">
+
+    function guardar() {
+
+    }
+
+
+</script>
 <!-- Form Card -->
 <div class="d-flex flex-row justify-content-center h-100">
 
     <div class="col-md-7 col-sm-6 shadow rounded mt-4 mb-5 bg-white mr-2 flex-column py-3 px-5">
+        <a th:href="@{/Church/}" style="flex: auto; position: absolute; top: 5px; left: 5px;" class="btn btn-danger btn-sm">Atr◙s</a>
 
         <h2 class="text-center">Datos de la Parroquia</h2>
 
@@ -43,14 +53,20 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col">
-                        <label for="foto">Subir Imagen:</label>
-                        <input id="foto" name="foto" th:value="${church.img}"class="form-control" style="width: 400px"  type="file"/>
+                        <label for="foto">Imagen Actual:</label>
+                        <input type="text" th:value="${church.img}" style="display: none" name="dirImg">
+                        <img th:if="${church.img != null}" th:src="@{'/uploads/' + ${church.img}}" th:alt="${church.name}" style="width: 100%;">
+                    </div>
+                    <div class="col">
+                        <label for="foto">Seleccionar Imagen:</label>
+                        <input id="foto" name="foto" th:value="${imagen}" class="form-control" style="width: 400px"  type="file"/>
                     </div>
 
                 </div>
 
                 <div class="row mb-6 px-3">
                     <label>Historia:</label>
+
                     <textarea th:field="*{history}"  th:value="${church.history}" style="resize:none" class="form-control" name="historia" cols="40" rows="5"></textarea>
                 </div>
 

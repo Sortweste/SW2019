@@ -3,6 +3,7 @@ package com.sort.capas.swvicaria.service;
 import com.sort.capas.swvicaria.domain.Church;
 import com.sort.capas.swvicaria.repository.IChurchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,6 +47,36 @@ public class ChurchServiceImpl implements IChurchService {
             }catch (IOException e){
                 e.printStackTrace();
             }
+        }
+        if(church.getId() != null){
+            iglesia.setId(church.getId());
+        }
+        iglesia.setName(church.getName());
+        iglesia.setHistory(church.getHistory());
+        iglesia.setAddress(church.getAddress());
+        return churchRepository.save(iglesia);
+    }
+
+    @Override
+    @Transactional
+    public Church edit(Church church, MultipartFile foto, String current) {
+        Church iglesia = new Church();
+        if(!foto.isEmpty()){
+            Path dirRec = Paths.get("C://Temp//uploads");
+            String rootPath = dirRec.toFile().getAbsolutePath();
+            try {
+                byte[] bytes = foto.getBytes();
+                Path rutaCompleta = Paths.get(rootPath + "//" + foto.getOriginalFilename());
+                Files.write(rutaCompleta, bytes);
+                iglesia.setImg(foto.getOriginalFilename());
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }else{
+            iglesia.setImg(current);
+        }
+        if(church.getId() != null){
+            iglesia.setId(church.getId());
         }
         iglesia.setName(church.getName());
         iglesia.setHistory(church.getHistory());
