@@ -22,7 +22,7 @@
 
         <div>
 
-            <form id="newGroup" th:action="@{/Group/saveGroup}" th:object="${group}" method="post" enctype="multipart/form-data">
+            <form id="newGroup" th:action="@{/Group/saveGroup}" th:object="${group}" method="post">
 
                 <input th:field="*{id}" id="id" th:value="${group.id}" class="form-control" type="hidden" />
 
