@@ -42,7 +42,12 @@
 
                 <div class="row mb-3">
 
-                    <div class="col-md-3">
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon" th:text="#{form.group.time}" id="sizing-addon1">Horario</span>
+                        <input type="date"  th:field="*{schedule}" class="form-control" />
+                    </div>
+                </div>
+                    <!--<div class="col-md-3">
                         <label for="scheduleDay" th:text="#{form.group.day}" ></label>
                         <input type="time" id="scheduleDay" th:field="*{schedule}" class="form-control" step="1800" min="7:00" max="21:00"/>
                     </div>
@@ -56,7 +61,7 @@
                         <label for="scheduleEnd" th:text="#{form.group.endTime}" ></label>
                         <input type="time" id="scheduleEnd" th:field="*{schedule}" class="form-control" step="1800" min="7:00" max="21:00"/>
                     </div>
-                </div>
+                </div>-->
 
                 <!---
                 <div class="row mb-3">

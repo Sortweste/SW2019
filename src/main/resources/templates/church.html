@@ -95,9 +95,9 @@
         <div class="row">
             <div class="col-lg-4" th:each="group: ${groups}">
                 <div class="single-destinations">
-                    <div class="thumb">
+                    <!--<div class="thumb">
                         <img class="img-fluid" th:if="${group.church.img != null}" th:src="@{'/uploads/' + ${group.church.img}}" th:alt="${group.name}">
-                    </div>
+                    </div>-->
                     <div class="details">
                         <h4 class="d-flex justify-content-between"></h4>
                         <span th:text="${group.name}"></span>
