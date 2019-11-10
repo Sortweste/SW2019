@@ -63,9 +63,9 @@ public class GroupController {
     @PostMapping("/showGroup")
     public String showGroup( Model model,@RequestParam("id") long id){
         Group group = groupService.findGroup(id);
-        List<User> users = userService.findAll();
+        List<Group> g = groupService.findAll();
         model.addAttribute("group", group);
-        model.addAttribute("users",users);
+        model.addAttribute("groups",g);
         return "group";
     }
 
