@@ -94,6 +94,10 @@
 									<p style="max-lines: 3;" th:text="${church.history}"></p>
                                     <p th:text="${church.address}"></p>
 									<div class="row">
+										<form th:action="@{/Church/Detail}" method="post">
+											<input type="hidden" th:value="${church.id}" name="id"/>
+											<input type="submit" style="margin-right:5px;" id="botonenviar" class="btn btn-primary shadow my-3" value="Ver">
+										</form>
 										<form th:action="@{/Church/edit}" method="post">
 											<input type="hidden" th:value="${church.id}" name="id"/>
 											<input sec:authorize="hasRole('ROLE_LIDER')" type="submit" id="botonenviar" class="btn btn-success shadow my-3" value="Editar">
@@ -117,7 +121,7 @@
 			<section class="home-about-area">
 				<div class="container-fluid">
 					<div class="row align-items-center justify-content-end">
-						<div class="col-lg-6 col-md-12 home-about-left">
+						<div class="col-lg-6 col-md-12 home-about-left no-padding">
 							<h1>
 								Visitanos en nuestras Parroquias <br>
 								Tu puedes hacer la diferencia! <br>
@@ -127,7 +131,7 @@
 								llevando la Buena Noticia a cada rincón.
 							</p>
 						</div>
-						<div class="col-lg-6 col-md-12 home-about-right no-padding">
+						<div class="col-lg-6 col-md-12 home-about-right">
 							<img class="img-fluid" th:src="@{/img/hotels/about-img.jpg}" alt="">
 						</div>
 					</div>

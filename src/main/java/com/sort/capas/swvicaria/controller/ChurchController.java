@@ -26,8 +26,13 @@ public class ChurchController{
     @GetMapping("/")
     public String showAll(Model model){
         model.addAttribute("churchs", churchService.findAll());
-
         return "hotels";
+    }
+
+    @PostMapping("/Detail")
+    public String showChurch(@RequestParam("id") Long id,Model model){
+        model.addAttribute("church", churchService.findChurchById(id));
+        return "churchDetail";
     }
 
     @Secured("ROLE_LIDER")

@@ -7,6 +7,7 @@ import com.sort.capas.swvicaria.repository.IGroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class GroupServiceImpl implements IGroupService {
 
     @Override
     @Transactional
-    public Group save(Group group,long id) {
+    public Group save(Group group, long id) {
         Group grupo=new Group();
         grupo.setName(group.getName());
         grupo.setInformation(group.getInformation());
