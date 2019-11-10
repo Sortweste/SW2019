@@ -75,7 +75,7 @@
                 <div class="row mb-3">
                     <div class="col-md-7">
                         <label for="Churchid" th:text="#{form.group.church}" ></label>
-                        <select id="Churchid" th:name="Churchid" class="form-control" style="width: 350px">
+                        <select name="Churchid" id="Churchid" th:name="Churchid" class="form-control" style="width: 350px">
                             <option th:each="p: ${group.church}"
                                     th:if="${p.name != null}" th:value="${p.id}"
                                     th:text="${p.name}"></option>

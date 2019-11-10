@@ -3,9 +3,12 @@ package com.sort.capas.swvicaria;
 import com.sort.capas.swvicaria.configuration.CustomLoginSuccessHandler;
 import com.sort.capas.swvicaria.controller.EventController;
 import com.sort.capas.swvicaria.domain.Event;
+import com.sort.capas.swvicaria.domain.Group;
+import com.sort.capas.swvicaria.domain.GroupxEvent;
 import com.sort.capas.swvicaria.service.IEventService;
 import com.sort.capas.swvicaria.service.IGroupxEventService;
 import com.sort.capas.swvicaria.service.JpaUserDetailsService;
+import org.apache.commons.httpclient.HttpStatus;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -58,11 +61,19 @@ public class EventControllerIntegrationTest {
         event.setCost(1000);
         event.setId((long)1);
 
+        GroupxEvent gxe = new GroupxEvent();
+        gxe.setEvent(event);
+        Group group = new Group();
+        group.setId(Long.parseLong(String.valueOf(1)));
+        gxe.setGroup2(group);
+
+
         when(iEventService.save(new Event())).thenReturn(event);
+        when(iGroupxEventService.save(new GroupxEvent())).thenReturn(gxe);
     }
 
 
-    /*@Test
+    @Test
     @WithMockUser(username = "admin", roles = {"LIDER"})
     public void whenGetAllChurchsFromService_thenReturnStatus() throws Exception {
         Event event = new Event();
@@ -74,7 +85,13 @@ public class EventControllerIntegrationTest {
         event.setTitle("Evento 1");
         event.setDate_start(new Date());
         event.setCost(1000);
-        event.setId((long)1);
+
+        GroupxEvent gxe = new GroupxEvent();
+        gxe.setEvent(event);
+        Group group = new Group();
+        group.setId(Long.parseLong(String.valueOf(1)));
+        gxe.setGroup2(group);
+
 
         mockMvc.perform(
                 post("/Event/saveEvent")
@@ -84,14 +101,14 @@ public class EventControllerIntegrationTest {
                         .param("time", event.getTime())
                         .param("sub_author", String.valueOf(event.getSub_author()))
                         .param("title",event.getTitle())
-                        .param("date",event.getDate_start().toString())
+                        //.param("date",event.getDate_start().toString())
                         .param("cost", String.valueOf(event.getCost()))
         )
                 .andDo(print())
                 .andExpect(status().is(201));
 
-        verify(iEventService, times(1)).save(event);
-    }*/
+        //verify(iEventService, times(1)).save(event);
+    }
 
 
 }

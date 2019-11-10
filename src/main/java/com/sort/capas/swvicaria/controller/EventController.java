@@ -29,10 +29,10 @@ public class EventController {
     IGroupxEventService iGroupxEventService;
 
     @Secured("ROLE_LIDER")
-    @RequestMapping("/saveEvent")
+    @PostMapping("/saveEvent")
     public @ResponseBody ResponseEntity<String> saveEvent(@RequestParam("author") Integer author, @RequestParam("sub_author") Integer sub_author,
                                                           @RequestParam("persona") String persona, @RequestParam("title") String title,
-                                                          @RequestParam("info") String info, @RequestParam("date")  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date,
+                                                          @RequestParam("info") String info, //@RequestParam("date")  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date,
                                                           @RequestParam("time") String time, @RequestParam("cost") double cost) throws Exception{
 
 
@@ -42,7 +42,8 @@ public class EventController {
         e.setPersona(persona);
         e.setTitle(title);
         e.setInformation(info);
-        e.setDate_start(date);
+        //e.setDate_start(date);
+        e.setDate_start(new Date());
         e.setTime(time);
         e.setCost(cost);
 
