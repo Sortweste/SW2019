@@ -43,6 +43,7 @@ public class EventController {
         e.setTitle(title);
         e.setInformation(info);
         //e.setDate_start(date);
+        e.setDate_start(new Date());
         e.setTime(time);
         e.setCost(cost);
 

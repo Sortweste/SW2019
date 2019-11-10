@@ -140,7 +140,7 @@ public class GroupControllerIntegrationTest {
         Group group = new Group();
         group.setId((long) 2);
         mockMvc.perform(
-                post("/Group/saveGroup").param("id", String.valueOf(group.getId()))
+                post("/Group/saveGroup").param("Churchid", String.valueOf(group.getId()))
                 .flashAttr("group", group)
         )
                 .andDo(print())
