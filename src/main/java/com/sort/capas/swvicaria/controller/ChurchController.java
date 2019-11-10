@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.nio.file.Path;
+
 
 @Controller
 @RequestMapping("/Church")
@@ -45,7 +47,7 @@ public class ChurchController{
     @Secured("ROLE_LIDER")
     @PostMapping("/edit")
     public String edit(@RequestParam("id") Long id,Model model){
-        Church church= new Church();
+        Church church = new Church();
         church= churchService.findChurchById(id);
         model.addAttribute("church", church);
         return "modifyChurch";
@@ -53,8 +55,8 @@ public class ChurchController{
 
     @Secured("ROLE_LIDER")
     @PostMapping("/modifyChurch")
-    public String saveEChurch(@ModelAttribute("church") Church church, @RequestParam("foto") MultipartFile foto){
-        churchService.save(church, foto);
+    public String saveEChurch(@ModelAttribute("church") Church church, @RequestParam("foto") MultipartFile foto,  @RequestParam("dirImg") String current){
+        churchService.edit(church, foto, current);
         return "redirect:/";
     }
 
