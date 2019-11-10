@@ -49,7 +49,7 @@ public class GroupController {
 
     @Secured("ROLE_LIDER")
     @PostMapping("/saveGroup")
-    public String saveGroup(@ModelAttribute("group") Group group, @RequestParam("id") long id){
+    public String saveGroup(@ModelAttribute("group") Group group, @RequestParam("Churchid") long id){
         groupService.save(group, id);
         return "redirect:/";
     }

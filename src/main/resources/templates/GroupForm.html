@@ -22,7 +22,7 @@
 
         <div>
 
-            <form id="newGroup" th:action="@{/Group/saveGroup}" th:object="${group}" method="post" enctype="multipart/form-data">
+            <form id="newGroup" th:action="@{/Group/saveGroup}" th:object="${group}" method="post">
 
                 <input th:field="*{id}" id="id" th:value="${group.id}" class="form-control" type="hidden" />
 
@@ -75,7 +75,7 @@
                 <div class="row mb-3">
                     <div class="col-md-7">
                         <label for="Churchid" th:text="#{form.group.church}" ></label>
-                        <select id="Churchid" th:name="Churchid" class="form-control" style="width: 350px">
+                        <select name="Churchid" id="Churchid" th:name="Churchid" class="form-control" style="width: 350px">
                             <option th:each="p: ${group.church}"
                                     th:if="${p.name != null}" th:value="${p.id}"
                                     th:text="${p.name}"></option>
