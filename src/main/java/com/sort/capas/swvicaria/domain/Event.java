@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "events")
@@ -28,10 +29,10 @@ public class Event {
     private String information;
 
     @Column(name = "e_author")
-    private String author;
+    private Integer author;
 
     @Column(name = "e_subauthor")
-    private String sub_author;
+    private Integer sub_author;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "e_date")
@@ -45,4 +46,8 @@ public class Event {
 
     @Column(name = "e_cost")
     private double cost;
+
+    @OneToMany(mappedBy = "event", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<GroupxEvent> gxe;
+
 }

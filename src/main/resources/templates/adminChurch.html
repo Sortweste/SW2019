@@ -95,7 +95,11 @@
 
                             <div class="col-md-1 mx-3">
                                 <p class="card-text">
-                                    <a th:href="@{'/Church/modifyChurch'+${church.id}}" class="btn btn-outline-success">Modificar</a>
+                                    <form id="Church" th:action="@{/Church/edit}" method="post" >
+                                      <input th:name="id" id="id" th:value="${church.id}" type="hidden"/>
+                                     <button type="submit" th:text="Modificar" class="btn btn-outline-success"></button>
+                                    </form>
+
                                 </p>
                             </div>
 

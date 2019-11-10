@@ -48,4 +48,7 @@ public class Group {
     @OneToMany(mappedBy = "group", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<User> users;
 
+    @OneToMany(mappedBy = "group2", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<GroupxEvent> gxe;
+
 }

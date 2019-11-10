@@ -47,11 +47,11 @@ public class EventControllerIntegrationTest {
     public void setUp() throws ParseException {
         Event event = new Event();
 
-        event.setAuthor("Grupo A");
+        event.setAuthor(3);
         event.setPersona("Lia");
         event.setInformation("Lorem Ipsum");
         event.setTime("16:00");
-        event.setSub_author("A");
+        event.setSub_author(5);
         event.setTitle("Evento 1");
         event.setDate_start(new Date());
         event.setCost(1000);

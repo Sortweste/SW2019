@@ -3,11 +3,15 @@ package com.sort.capas.swvicaria.controller;
 
 
 import com.sort.capas.swvicaria.domain.Event;
+import com.sort.capas.swvicaria.domain.Group;
+import com.sort.capas.swvicaria.domain.GroupxEvent;
 import com.sort.capas.swvicaria.service.IEventService;
+import com.sort.capas.swvicaria.service.IGroupxEventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,9 +25,12 @@ public class EventController {
     @Autowired
     IEventService ieventService;
 
-    //@Secured("ROLE_LIDER")
+    @Autowired
+    IGroupxEventService iGroupxEventService;
+
+    @Secured("ROLE_LIDER")
     @RequestMapping("/saveEvent")
-    public @ResponseBody ResponseEntity<String> saveEvent(@RequestParam("author") String author, @RequestParam("sub_author") String sub_author,
+    public @ResponseBody ResponseEntity<String> saveEvent(@RequestParam("author") Integer author, @RequestParam("sub_author") Integer sub_author,
                                                           @RequestParam("persona") String persona, @RequestParam("title") String title,
                                                           @RequestParam("info") String info, @RequestParam("date")  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date,
                                                           @RequestParam("time") String time, @RequestParam("cost") double cost) throws Exception{
@@ -39,8 +46,14 @@ public class EventController {
         e.setTime(time);
         e.setCost(cost);
 
+        Event event = ieventService.save(e);
+        GroupxEvent gxe = new GroupxEvent();
+        gxe.setEvent(event);
+        Group group = new Group();
+        group.setId(Long.parseLong(String.valueOf(author)));
+        gxe.setGroup2(group);
+        GroupxEvent groupxEvent = iGroupxEventService.save(gxe);
 
-        ieventService.save(e);
 
         return new ResponseEntity<>("hola", HttpStatus.CREATED);
     }
