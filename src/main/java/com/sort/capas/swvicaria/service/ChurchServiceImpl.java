@@ -37,16 +37,7 @@ public class ChurchServiceImpl implements IChurchService {
     public Church save(Church church, MultipartFile foto) {
         Church iglesia = new Church();
         if(!foto.isEmpty()){
-            Path dirRec = Paths.get("C://Temp//uploads");
-            String rootPath = dirRec.toFile().getAbsolutePath();
-            try {
-                byte[] bytes = foto.getBytes();
-                Path rutaCompleta = Paths.get(rootPath + "//" + foto.getOriginalFilename());
-                Files.write(rutaCompleta, bytes);
-                iglesia.setImg(foto.getOriginalFilename());
-            }catch (IOException e){
-                e.printStackTrace();
-            }
+            ChurchManagment(foto, iglesia);
         }
         if(church.getId() != null){
             iglesia.setId(church.getId());
@@ -57,21 +48,25 @@ public class ChurchServiceImpl implements IChurchService {
         return churchRepository.save(iglesia);
     }
 
+    private void ChurchManagment(MultipartFile foto, Church iglesia) {
+        Path dirRec = Paths.get("C://Temp//uploads");
+        String rootPath = dirRec.toFile().getAbsolutePath();
+        try {
+            byte[] bytes = foto.getBytes();
+            Path rutaCompleta = Paths.get(rootPath + "//" + foto.getOriginalFilename());
+            Files.write(rutaCompleta, bytes);
+            iglesia.setImg(foto.getOriginalFilename());
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
     @Override
     @Transactional
     public Church edit(Church church, MultipartFile foto, String current) {
         Church iglesia = new Church();
         if(!foto.isEmpty()){
-            Path dirRec = Paths.get("C://Temp//uploads");
-            String rootPath = dirRec.toFile().getAbsolutePath();
-            try {
-                byte[] bytes = foto.getBytes();
-                Path rutaCompleta = Paths.get(rootPath + "//" + foto.getOriginalFilename());
-                Files.write(rutaCompleta, bytes);
-                iglesia.setImg(foto.getOriginalFilename());
-            }catch (IOException e){
-                e.printStackTrace();
-            }
+            ChurchManagment(foto, iglesia);
         }else{
             iglesia.setImg(current);
         }

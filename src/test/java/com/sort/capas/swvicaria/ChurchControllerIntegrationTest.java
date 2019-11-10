@@ -66,6 +66,7 @@ public class ChurchControllerIntegrationTest {
         when(iChurchService.save(church1, foto)).thenReturn(church1);
         when(iChurchService.findChurchById((long)1)).thenReturn(church1);
         when(iChurchService.save(new Church(),foto)).thenReturn(church2);
+        when(iChurchService.edit(new Church(),foto,"")).thenReturn(church2);
     }
 
     @Test
@@ -132,17 +133,20 @@ public class ChurchControllerIntegrationTest {
     public void  whenSaveChurchEFromService_thenReturnStatus() throws Exception{
         Church church = new Church();
         church.setId((long) 2);
+        String testImg = "Test";
+        church.setImg(testImg);
 
         MockMultipartFile foto = new MockMultipartFile("foto","b","c","d".getBytes());
 
         mockMvc.perform(multipart("/Church/modifyChurch")
                 .file(foto)
                 .flashAttr("church", church)
+                .param("dirImg", church.getImg())
         )
                 .andDo(print())
                 .andExpect(status().is3xxRedirection());
 
-        verify(iChurchService, times(1)).save(church, foto);
+        verify(iChurchService, times(1)).edit(church, foto, testImg);
     }
 
 }
