@@ -62,7 +62,7 @@ public class EventControllerIntegrationTest {
     }
 
 
-    @Test
+    /*@Test
     @WithMockUser(username = "admin", roles = {"LIDER"})
     public void whenGetAllChurchsFromService_thenReturnStatus() throws Exception {
         Event event = new Event();
@@ -91,7 +91,7 @@ public class EventControllerIntegrationTest {
                 .andExpect(status().is(201));
 
         verify(iEventService, times(1)).save(event);
-    }
+    }*/
 
 
 }
