@@ -12,5 +12,5 @@ deploy:
   app: sw-vicaria
   on:
     repo: Sortweste/SW2019
-    production: sw-vicaria-production
+    production: sw-vicaria
     all_branches: true
