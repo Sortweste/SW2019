@@ -5,6 +5,12 @@ install:
 - mvn -N io.takari:maven:wrapper
 - ./mvnw test -B
 - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+notifications:
+  email:
+    recipients:
+      - 00025416@uca.edu.sv
+    on_success: always # default: change
+    on_failure: always # default: always
 deploy:
   provider: heroku
   api_key:
