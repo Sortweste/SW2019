@@ -9,6 +9,10 @@ notifications:
   email:
     recipients:
       - 00025416@uca.edu.sv
+      - 00198216@uca.edu.sv
+      - 00061316@uca.edu.sv
+      - 00354615@uca.edu.sv
+      - 00123216@uca.edu.sv
     on_success: always # default: change
     on_failure: always # default: always
 deploy:
