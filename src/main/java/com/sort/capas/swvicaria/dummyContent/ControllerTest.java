@@ -2,6 +2,7 @@ package com.sort.capas.swvicaria.dummyContent;
 
 import com.sort.capas.swvicaria.domain.Church;
 import com.sort.capas.swvicaria.service.IChurchService;
+import com.sort.capas.swvicaria.service.IEmailService;
 import com.sort.capas.swvicaria.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,9 @@ public class ControllerTest {
 
     @Autowired
     IUserService UserService;
+
+    @Autowired
+    private IEmailService iEmailService;
 
     @GetMapping("/form")
     public String formTest(){
@@ -57,6 +61,11 @@ public class ControllerTest {
         /* Test */
         model.addAttribute("one",church);
         return "group";
+    }
+    @GetMapping("/email")
+    public String mensaje(Model model) throws Exception {
+        iEmailService.send_message("00123216@uca.edu.sv");
+        return "email";
     }
 
     /*
