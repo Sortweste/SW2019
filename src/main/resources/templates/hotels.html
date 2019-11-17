@@ -44,6 +44,11 @@
 								<li sec:authorize="hasRole('ROLE_LIDER')"><a th:href="@{/Church/create}" >Crear Iglesia</a></li>
 								<li><a th:href="@{/Church/}">Ver Iglesias</a></li>
 				            </ul>
+
+							<li  sec:authorize="hasRole('ROLE_LIDER')" class="menu-has-children"><a href="">Mensajes</a>
+								<ul>
+									<li sec:authorize="hasRole('ROLE_LIDER')"><a th:href="@{/Message/List}" >Ver mensajes</a></li>
+								</ul>
 				          </li>					          					          		          
 							<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">logout</a></li>
 							<li sec:authorize="!isAuthenticated()"> <a class="btn btn-outline-primary" th:href="@{/login}">Sign in</a></li>
