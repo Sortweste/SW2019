@@ -222,7 +222,7 @@
 
 
                     <!-- Button trigger modal for anuncios-->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    <button sec:authorize="hasRole('ROLE_LIDER')" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                         Crear Anuncio
                     </button>
 
@@ -413,9 +413,9 @@
 <!-- End footer Area -->
 
 
-<script th:src="@{/js/vendor/jquery-2.2.4.min.js}"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script th:src="@{/js/popper.min.js}"></script>
-<script th:src="@{/js/vendor/bootstrap.min.js}"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script th:src="@{/js/jquery-ui.js}"></script>
 <script th:src="@{/js/superfish.min.js}"></script>
 <script th:src="@{/js/jquery.ajaxchimp.min.js}"></script>
