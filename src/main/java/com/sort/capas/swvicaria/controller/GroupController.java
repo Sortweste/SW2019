@@ -3,7 +3,6 @@ package com.sort.capas.swvicaria.controller;
 import com.sort.capas.swvicaria.domain.Church;
 import com.sort.capas.swvicaria.domain.Group;
 import com.sort.capas.swvicaria.DTO.ChurchGroupDTO;
-import com.sort.capas.swvicaria.domain.User;
 import com.sort.capas.swvicaria.service.IChurchService;
 import com.sort.capas.swvicaria.service.IGroupService;
 import com.sort.capas.swvicaria.service.IUserService;
@@ -12,7 +11,6 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 

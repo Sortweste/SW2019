@@ -3,9 +3,7 @@ package com.sort.capas.swvicaria.service;
 import com.sort.capas.swvicaria.domain.Church;
 import com.sort.capas.swvicaria.repository.IChurchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
