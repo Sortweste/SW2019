@@ -107,7 +107,7 @@
 
 
                         $.ajax({
-                            url: 'http://localhost:8080/Event/saveEvent?author='+persona+'&sub_author='+persona2+'&persona='+persona3+'&title='+title+'&info='+info+'&date='+start+'&time='+end+'&cost='+cost,
+                            url: 'https://sw-vicaria.herokuapp.com/Event/saveEvent?author='+persona+'&sub_author='+persona2+'&persona='+persona3+'&title='+title+'&info='+info+'&date='+start+'&time='+end+'&cost='+cost,
                             success: function(data){
                                 const Toast = Swal.mixin({
                                     toast: true,
