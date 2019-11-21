@@ -5,6 +5,21 @@ install:
 - mvn -N io.takari:maven:wrapper
 - ./mvnw test -B
 - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
+addons:
+  sonarcloud:
+    organization: "raultejada"
+    token:
+      secure: "3cf6cd054b35e914f8878958e0d39e0b5b1e4c22" # encrypted value of your token
+
+script:
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=raultejada
+
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.sonar/cache'
+
 notifications:
   email:
     recipients:
