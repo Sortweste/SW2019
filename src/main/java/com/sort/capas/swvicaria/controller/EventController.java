@@ -28,7 +28,7 @@ public class EventController {
     IGroupxEventService iGroupxEventService;
 
     @Secured("ROLE_LIDER")
-    @PostMapping("/saveEvent")
+    @RequestMapping("/saveEvent")
     public @ResponseBody ResponseEntity<String> saveEvent(@RequestParam("author") Integer author, @RequestParam("sub_author") Integer sub_author,
                                                           @RequestParam("persona") String persona, @RequestParam("title") String title,
                                                           @RequestParam("info") String info, //@RequestParam("date")  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date,
