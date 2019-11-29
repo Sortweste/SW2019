@@ -8,7 +8,6 @@ import com.sort.capas.swvicaria.domain.GroupxEvent;
 import com.sort.capas.swvicaria.service.IEventService;
 import com.sort.capas.swvicaria.service.IGroupxEventService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
@@ -29,7 +28,7 @@ public class EventController {
     IGroupxEventService iGroupxEventService;
 
     @Secured("ROLE_LIDER")
-    @PostMapping("/saveEvent")
+    @RequestMapping("/saveEvent")
     public @ResponseBody ResponseEntity<String> saveEvent(@RequestParam("author") Integer author, @RequestParam("sub_author") Integer sub_author,
                                                           @RequestParam("persona") String persona, @RequestParam("title") String title,
                                                           @RequestParam("info") String info, //@RequestParam("date")  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date,
@@ -42,7 +41,6 @@ public class EventController {
         e.setPersona(persona);
         e.setTitle(title);
         e.setInformation(info);
-        //e.setDate_start(date);
         e.setDate_start(new Date());
         e.setTime(time);
         e.setCost(cost);

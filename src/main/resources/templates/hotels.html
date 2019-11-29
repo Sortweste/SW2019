@@ -11,8 +11,6 @@
 		<title>Travel</title>
 
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
-
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -44,6 +42,11 @@
 								<li sec:authorize="hasRole('ROLE_LIDER')"><a th:href="@{/Church/create}" >Crear Iglesia</a></li>
 								<li><a th:href="@{/Church/}">Ver Iglesias</a></li>
 				            </ul>
+
+							<li  sec:authorize="hasRole('ROLE_LIDER')" class="menu-has-children"><a href="">Mensajes</a>
+								<ul>
+									<li sec:authorize="hasRole('ROLE_LIDER')"><a th:href="@{/Message/List}" >Ver mensajes</a></li>
+								</ul>
 				          </li>					          					          		          
 							<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">logout</a></li>
 							<li sec:authorize="!isAuthenticated()"> <a class="btn btn-outline-primary" th:href="@{/login}">Sign in</a></li>
@@ -83,7 +86,7 @@
 						<div class="col-lg-4" th:each="church: ${churchs}">
 							<div class="single-destinations">
 								<div class="thumb">
-									<img th:if="${church.img != null}" th:src="@{'/uploads/' + ${church.img}}" th:alt="${church.name}" style="width: 100%;">
+									<!--<img th:if="${church.img != null}" th:src="@{'/uploads/' + ${church.img}}" th:alt="${church.name}" style="width: 100%;">-->
 
 
 								</div>
@@ -158,7 +161,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			</footer>
 			<!-- End footer Area -->
 
-
+			<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+			<script th:src="@{/js/popper.min.js}"></script>
+			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 			<script th:src="@{/js/jquery-ui.js}"></script>
 			<script th:src="@{/js/superfish.min.js}"></script>
 			<script th:src="@{/js/jquery.ajaxchimp.min.js}"></script>
