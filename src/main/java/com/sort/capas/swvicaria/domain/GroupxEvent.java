@@ -11,6 +11,7 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+//Entidad de Grupo_x_Evento
 public class GroupxEvent {
 
     @Id

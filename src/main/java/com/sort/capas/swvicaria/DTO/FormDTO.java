@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
+//DTO usado para formularios.
 public class FormDTO {
     private String name;
     private String value;

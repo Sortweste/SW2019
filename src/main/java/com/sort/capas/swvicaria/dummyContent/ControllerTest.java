@@ -15,6 +15,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/Test")
+//Controlador usado para pruebas del proyecto.
 public class ControllerTest {
 
     @Autowired

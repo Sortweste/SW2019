@@ -15,6 +15,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+//Entidad de evento
 public class Event {
 
     @Id

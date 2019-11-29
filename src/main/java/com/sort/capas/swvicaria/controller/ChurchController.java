@@ -22,18 +22,21 @@ public class ChurchController{
 
     Authentication auto = SecurityContextHolder.getContext().getAuthentication();
 
+    //Muestra todas las iglesias disponibles.
     @GetMapping("/")
     public String showAll(Model model){
         model.addAttribute("churchs", churchService.findAll());
         return "hotels";
     }
 
+    //Muestra la informacion de una iglesia seleccionada.
     @PostMapping("/Detail")
     public String showChurch(@RequestParam("id") Long id,Model model){
         model.addAttribute("church", churchService.findChurchById(id));
         return "churchDetail";
     }
 
+    //Permite a un lider crear una iglesia.
     @Secured("ROLE_LIDER")
     @GetMapping("/create")
     public String add(Model model){
@@ -41,6 +44,7 @@ public class ChurchController{
         return "formTemplate";
     }
 
+    //Permite a un lider guardar una iglesia.
     @Secured("ROLE_LIDER")
     @PostMapping("/saveChurch")
     public String saveChurch(@ModelAttribute("church") Church church, @RequestParam("foto") MultipartFile foto){
@@ -48,6 +52,7 @@ public class ChurchController{
         return "redirect:/";
     }
 
+    //Permite a un lider modificar una iglesia.
     @Secured("ROLE_LIDER")
     @PostMapping("/edit")
     public String edit(@RequestParam("id") Long id,Model model){
@@ -57,6 +62,7 @@ public class ChurchController{
         return "modifyChurch";
     }
 
+    //Permite a un lider guardar los nuevos datos a modificar.
     @Secured("ROLE_LIDER")
     @PostMapping("/modifyChurch")
     public String saveEChurch(@ModelAttribute("church") Church church, @RequestParam("foto") MultipartFile foto,  @RequestParam("dirImg") String current){
