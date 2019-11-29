@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/Message")
 public class MessageController {
 
+    //Manda a la pagina de correos.
     @GetMapping("/List")
     public String groupDashBoard(){
         return "email";

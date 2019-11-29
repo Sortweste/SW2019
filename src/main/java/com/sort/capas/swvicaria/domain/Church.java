@@ -16,6 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @Valid
 @ApiModel(description = "Church Entity")
+//Entidad de iglesia
 public class Church {
 
     @Id

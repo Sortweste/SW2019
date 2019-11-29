@@ -23,7 +23,7 @@ public class EmailServiceImpl implements IEmailService {
         MimeMessageHelper msgHelper = new MimeMessageHelper(msg, true); //multipart are attachments
         msgHelper.setFrom(emailSender);
         msgHelper.setTo(mail);
-        msgHelper.setText("Se ha actualizado el evento "+event+ ". Para mas informacion, visita nuestra pagina.");
+        msgHelper.setText("Se ha actualizado el evento: "+event+ ". Para mas informacion, visita nuestra pagina.");
         msgHelper.setSubject("VicariaSW Notificaciones: "+author);
         javaMailSender.send(msg);
     }
