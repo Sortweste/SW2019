@@ -132,7 +132,7 @@ public class AdminControllerIntegrationTest {
     @WithMockUser(username = "admin", roles = {"LIDER"})
     public void whenManageMembersByGroup_thenReturnStatus() throws Exception {
         mockMvc.perform(
-                post("/Admin/Group/Members")
+                post("/Admin/Members")
                         .contentType(MediaType.APPLICATION_JSON)
                         .param("id", String.valueOf(1))
         )
