@@ -5,9 +5,7 @@ import com.sort.capas.swvicaria.controller.EventController;
 import com.sort.capas.swvicaria.domain.Event;
 import com.sort.capas.swvicaria.domain.Group;
 import com.sort.capas.swvicaria.domain.GroupxEvent;
-import com.sort.capas.swvicaria.service.IEventService;
-import com.sort.capas.swvicaria.service.IGroupxEventService;
-import com.sort.capas.swvicaria.service.JpaUserDetailsService;
+import com.sort.capas.swvicaria.service.*;
 import org.apache.commons.httpclient.HttpStatus;
 import org.junit.Before;
 import org.junit.Test;
@@ -40,6 +38,15 @@ public class EventControllerIntegrationTest {
 
     @MockBean
     IGroupxEventService iGroupxEventService;
+
+    @MockBean
+    IEmailService iEmailService;
+
+    @MockBean
+    IUserService iUserService;
+
+    @MockBean
+    IGroupService iGroupService;
 
     @MockBean
     private JpaUserDetailsService jpaUserDetailsService;
