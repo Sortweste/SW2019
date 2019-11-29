@@ -6,6 +6,7 @@ import com.sort.capas.swvicaria.controller.AdminController;
 import com.sort.capas.swvicaria.domain.Church;
 import com.sort.capas.swvicaria.domain.Group;
 import com.sort.capas.swvicaria.service.IChurchService;
+import com.sort.capas.swvicaria.service.IEventService;
 import com.sort.capas.swvicaria.service.IGroupService;
 import com.sort.capas.swvicaria.service.JpaUserDetailsService;
 import org.junit.Before;
@@ -46,6 +47,9 @@ public class AdminControllerIntegrationTest {
 
     @MockBean
     IGroupService iGroupService;
+
+    @MockBean
+    IEventService iEventService;
 
     @Before
     public void setUp(){
