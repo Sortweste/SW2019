@@ -5,6 +5,7 @@ import com.sort.capas.swvicaria.domain.Event;
 import java.text.ParseException;
 import java.util.List;
 
+//Servicio de event
 public interface IEventService {
     List <Event> findAll();
     Event findEventById(Long id);

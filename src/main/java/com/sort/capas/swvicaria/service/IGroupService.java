@@ -4,6 +4,7 @@ import com.sort.capas.swvicaria.domain.Group;
 
 import java.util.List;
 
+//Servicio de group
 public interface IGroupService {
     List<Group> findGroupsByChurch(long id);
     List<Group> findAll();
