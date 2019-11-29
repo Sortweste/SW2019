@@ -15,6 +15,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/Test")
+//Controlador usado para pruebas del proyecto.
 public class ControllerTest {
 
     @Autowired
@@ -62,11 +63,12 @@ public class ControllerTest {
         model.addAttribute("one",church);
         return "group";
     }
+    /*
     @GetMapping("/email")
     public String mensaje(Model model) throws Exception {
-        iEmailService.send_message("00123216@uca.edu.sv");
+        iEmailService.send_message("00198216@uca.edu.sv");
         return "email";
-    }
+    }*/
 
     /*
     @GetMapping("/error403")

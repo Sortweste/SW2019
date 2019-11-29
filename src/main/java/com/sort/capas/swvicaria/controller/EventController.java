@@ -5,8 +5,8 @@ package com.sort.capas.swvicaria.controller;
 import com.sort.capas.swvicaria.domain.Event;
 import com.sort.capas.swvicaria.domain.Group;
 import com.sort.capas.swvicaria.domain.GroupxEvent;
-import com.sort.capas.swvicaria.service.IEventService;
-import com.sort.capas.swvicaria.service.IGroupxEventService;
+import com.sort.capas.swvicaria.domain.User;
+import com.sort.capas.swvicaria.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/Event")
@@ -26,6 +27,15 @@ public class EventController {
 
     @Autowired
     IGroupxEventService iGroupxEventService;
+
+    @Autowired
+    IEmailService iEmailService;
+
+    @Autowired
+    IUserService iUserService;
+
+    @Autowired
+    IGroupService iGroupService;
 
     //Muestra todas las iglesias disponibles.
     @Secured("ROLE_LIDER")
@@ -54,6 +64,13 @@ public class EventController {
         gxe.setGroup2(group);
         GroupxEvent groupxEvent = iGroupxEventService.save(gxe);
 
+        //Notificando Usuarios
+        List<User> usuarios = iUserService.findAll();
+        Group grupo = iGroupService.findGroup(author);
+
+        for (User x:usuarios) {
+            iEmailService.send_message(x.getEmail(), grupo.getName(), title);
+        }
 
         return new ResponseEntity<>("hola", HttpStatus.CREATED);
     }

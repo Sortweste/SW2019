@@ -9,6 +9,7 @@ import java.util.List;
 @Entity
 @Table(name = "roles")
 @Data
+//Entidad de Roles
 public class Role implements Serializable {
 
     @Id

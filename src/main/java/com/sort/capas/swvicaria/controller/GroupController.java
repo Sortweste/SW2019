@@ -28,13 +28,14 @@ public class GroupController {
     private IUserService userService;
 
 
+    //Mostrar la lista de los grupos.
     @GetMapping("/")
     public String init(Model model){
         model.addAttribute("groups", groupService.findAll());
         return "church";
     }
 
-
+    //Permite a un lider crear un grupo en una iglesia.
     @Secured("ROLE_LIDER")
     @GetMapping("/create")
     public String add(Model model){
@@ -45,6 +46,7 @@ public class GroupController {
         return "GroupForm";
     }
 
+    //Permite a un lider guardar un grupo creado.
     @Secured("ROLE_LIDER")
     @PostMapping("/saveGroup")
     public String saveGroup(@ModelAttribute("group") Group group, @RequestParam("Churchid") long id){
@@ -52,6 +54,7 @@ public class GroupController {
         return "redirect:/";
     }
 
+    //Muestra la lista de grupos de una iglesia.
     @PostMapping("/showByChurch")
     public String showGroups( Model model,@RequestParam("id") long id){
         List<Group> groups =groupService.findGroupsByChurch(id);
@@ -59,6 +62,7 @@ public class GroupController {
         return "church";
     }
 
+    //Muestra un grupo en epecifico.
     @PostMapping("/showGroup")
     public String showGroup( Model model,@RequestParam("id") long id){
         Group group = groupService.findGroup(id);

@@ -16,6 +16,7 @@ import javax.validation.Valid;
 @AllArgsConstructor
 @NoArgsConstructor
 @Valid
+//Entidad usada para pruebas
 public class Test {
 
     @Id

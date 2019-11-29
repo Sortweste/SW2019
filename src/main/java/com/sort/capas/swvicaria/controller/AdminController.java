@@ -1,6 +1,8 @@
 package com.sort.capas.swvicaria.controller;
 
+import com.sort.capas.swvicaria.domain.Event;
 import com.sort.capas.swvicaria.service.IChurchService;
+import com.sort.capas.swvicaria.service.IEventService;
 import com.sort.capas.swvicaria.service.IGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
@@ -22,10 +24,22 @@ public class AdminController {
     @Autowired
     IGroupService iGroupService;
 
+    @Autowired
+    IEventService iEventService;
+
     // Redirige hacia la pagina de administrador de eventos.
     @GetMapping("/Event")
-    public String eventDashBoard(){
+    public String eventDashBoard(Model model){
+        model.addAttribute("events",iEventService.findAll());
         return "adminDashboard";
+    }
+
+    @PostMapping("/editEvent")
+    public String eventModify(Model model, @RequestParam("id") Long id){
+        Event e = new Event();
+        e = iEventService.findEventById(id);
+        model.addAttribute("event", e);
+        return "editEvent";
     }
 
     // Redirige hacia la pagina de administrador de iglesias.
@@ -43,10 +57,10 @@ public class AdminController {
     }
 
     // Muestra la lista de miembros en un grupo.
-    @PostMapping("/Group/Members")
+    @PostMapping("/Members")
     public String manageMembersByGroup(@RequestParam("id") Long id, Model model){
         model.addAttribute("members", iGroupService.findGroup(id).getUsers());
-        return "adminGroup";
+        return "adminMembers";
     }
 
 }

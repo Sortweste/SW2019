@@ -7,12 +7,23 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.text.ParseException;
+import java.util.List;
 
 @Service
 public class EventServiceImpl implements IEventService {
     @Autowired
     IEventRepository ieventRepository;
 
+
+    @Override
+    public List<Event> findAll() {
+        return ieventRepository.findAll();
+    }
+
+    @Override
+    public Event findEventById(Long id) {
+        return ieventRepository.findEventById(id);
+    }
 
     @Override
     @Transactional
