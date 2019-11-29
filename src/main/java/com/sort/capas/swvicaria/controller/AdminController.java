@@ -51,7 +51,7 @@ public class AdminController {
     @PostMapping("/Group/Members")
     public String manageMembersByGroup(@RequestParam("id") Long id, Model model){
         model.addAttribute("members", iGroupService.findGroup(id).getUsers());
-        return "adminGroup";
+        return "adminMembers";
     }
 
 }

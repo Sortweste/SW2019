@@ -100,15 +100,12 @@
                                 </p>
                             </div>
 
-                            <!--
+                            <form th:action="@{/Admin/Group/Members}" method="post">
+                                <input type="hidden" th:value="${group.id}" name="id"/>
+                                <input type="submit" style="margin-right:5px;" id="botonenviar" class="btn btn-primary shadow my-3" value="Ver miembros">
+                            </form>
 
 
-                            <div class="col-md-1 px-3">
-                                <p class="card-text">
-                                    <a th:href="@{'/Church/deleteChurch'+${group.id}}" class="btn btn-outline-danger">Eliminar</a>
-                                </p>
-                            </div>
-                            -->
 
                         </div>
                     </div>
