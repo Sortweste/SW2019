@@ -47,7 +47,14 @@
 								<ul>
 									<li sec:authorize="hasRole('ROLE_LIDER')"><a th:href="@{/Message/List}" >Ver mensajes</a></li>
 								</ul>
-				          </li>					          					          		          
+				          </li>
+							<li  sec:authorize="hasRole('ROLE_LIDER')" class="menu-has-children"><a href="">Administracion</a>
+								<ul>
+									<li sec:authorize="hasRole('ROLE_LIDER')"><a th:href="@{/Admin/Event}" >Eventos</a></li>
+									<li sec:authorize="hasRole('ROLE_LIDER')"><a th:href="@{/Admin/Group}" >Grupos</a></li>
+									<li sec:authorize="hasRole('ROLE_LIDER')"><a th:href="@{/Admin/Church}" >Iglesias</a></li>
+								</ul>
+							</li>
 							<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">logout</a></li>
 							<li sec:authorize="!isAuthenticated()"> <a class="btn btn-outline-primary" th:href="@{/login}">Sign in</a></li>
 				        </ul>
