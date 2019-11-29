@@ -57,11 +57,16 @@
                         <input id="description" th:field="*{sub_author}" th:value="${event.sub_author}" class="form-control" type="text" />
                     </div>
                 </div>
-                div class="row mb-3">
+                <div class="row mb-3">
                 <div class="col">
                     <label for="description">Fecha de inicio:</label>
-                    <input id="description" th:field="*{date_start}" th:value="${event.date_start}" class="form-control" type="" />
+                    <input id="description" th:field="*{date_start}" class="form-control" type="date" />
                 </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="description">Hora de inicio:</label>
+                            <input id="description" th:field="*{date_start}" class="form-control" type="time" />
+                        </div>
         </div>
 
 
@@ -70,11 +75,10 @@
                     <label>Información</label>
 
                     <textarea th:field="*{information}"  th:value="${event.information}" style="resize:none" class="form-control" name="historia" cols="40" rows="5"></textarea>
+                   <br> <input type="submit" id="botonenviar" class="btn btn-success shadow my-3" value="Guardar">
+
                 </div>
 
-                <div class="row mb-3 justify-content-center">
-                    <input type="submit" id="botonenviar" class="btn btn-success shadow my-3" value="Guardar">
-                </div>
 
             </form>
 
