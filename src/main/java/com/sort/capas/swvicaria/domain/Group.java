@@ -17,6 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Valid
+//Entidad de grupo
 public class Group {
 
     @Id
