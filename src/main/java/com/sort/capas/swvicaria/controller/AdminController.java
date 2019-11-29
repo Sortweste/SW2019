@@ -1,5 +1,6 @@
 package com.sort.capas.swvicaria.controller;
 
+import com.sort.capas.swvicaria.domain.Event;
 import com.sort.capas.swvicaria.service.IChurchService;
 import com.sort.capas.swvicaria.service.IEventService;
 import com.sort.capas.swvicaria.service.IGroupService;
@@ -31,6 +32,14 @@ public class AdminController {
     public String eventDashBoard(Model model){
         model.addAttribute("events",iEventService.findAll());
         return "adminDashboard";
+    }
+
+    @PostMapping("/editEvent")
+    public String eventModify(Model model, @RequestParam("id") Long id){
+        Event e = new Event();
+        e = iEventService.findEventById(id);
+        model.addAttribute("event", e);
+        return "editEvent";
     }
 
     // Redirige hacia la pagina de administrador de iglesias.

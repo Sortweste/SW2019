@@ -282,20 +282,33 @@
                     <th>Acciones</th>
                   </tr>
                 </thead>
-                <tfoot>
-                  <tr>
-                    <th>Title</th>
-                    <th>Information</th>
-                    <th>Author</th>
-                    <th>Sub Autor</th>
-                    <th>Date Start</th>
-                    <th>Time</th>
-                    <th>Personn</th>
-                    <th>Personn</th>
-                  </tr>
-                </tfoot>
                 <tbody>
+                  <tr th:each="event: ${events}">
+                    <th><span th:text="${event.title}"></span>
+                    </th>
+                    <th><span th:text="${event.information}"></span>
+                    </th>
+                    <th><span th:text="${event.author}"></span>
+                    </th>
+                    <th><span th:text="${event.sub_author}"></span>
+                  </th>
+                    <th><span th:text="${event.date_start}"></span>
+                    </th>
+                    <th><span th:text="${event.time}"></span>
+                    </th>
+                    <th><span th:text="${event.persona}"></span>
+                    </th>
+                    <th>
+                      <form th:action="@{/Admin/editEvent}" method="post">
+                        <input type="hidden" th:value="${event.id}" name="id"/>
+                        <input type="submit" style="margin-right:5px;" id="botonenviar" class="btn btn-primary shadow my-3" value="Editar">
+                      </form>
+                    </th>
+
+
+                  </tr>
                 </tbody>
+
               </table>
             </div>
           </div>
