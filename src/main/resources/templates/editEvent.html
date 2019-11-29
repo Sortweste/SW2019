@@ -26,9 +26,9 @@
     <div class="col-md-7 col-sm-6 shadow rounded mt-4 mb-5 bg-white mr-2 flex-column py-3 px-5">
         <a th:href="@{/Admin/Event/}" style="flex: auto; position: absolute; top: 5px; left: 5px;" class="btn btn-danger btn-sm">Atr◙s</a>
 
-        <h2 class="text-center">Datos de la Parroquia</h2>
+        <h2 class="text-center">Datos de un Evento</h2>
 
-        <h6 class="text-center mb-4">Ingrese los datos en los respectivos campos, seleccione una imagen desde su galería</h6>
+        <h6 class="text-center mb-4">Ingrese los datos en los respectivos campos</h6>
 
 
         <!-- Formulario agregar Evento-->
@@ -57,6 +57,12 @@
                         <input id="description" th:field="*{sub_author}" th:value="${event.sub_author}" class="form-control" type="text" />
                     </div>
                 </div>
+                div class="row mb-3">
+                <div class="col">
+                    <label for="description">Fecha de inicio:</label>
+                    <input id="description" th:field="*{date_start}" th:value="${event.date_start}" class="form-control" type="" />
+                </div>
+        </div>
 
 
 
