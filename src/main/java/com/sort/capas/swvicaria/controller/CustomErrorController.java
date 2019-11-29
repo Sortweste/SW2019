@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class CustomErrorController implements ErrorController {
 
+    //Redirige cada error a su HTML correspondiente.
     @GetMapping("/error")
     public String handleError(HttpServletRequest request) {
 

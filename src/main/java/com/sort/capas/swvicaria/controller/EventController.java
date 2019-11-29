@@ -27,6 +27,7 @@ public class EventController {
     @Autowired
     IGroupxEventService iGroupxEventService;
 
+    //Muestra todas las iglesias disponibles.
     @Secured("ROLE_LIDER")
     @RequestMapping("/saveEvent")
     public @ResponseBody ResponseEntity<String> saveEvent(@RequestParam("author") Integer author, @RequestParam("sub_author") Integer sub_author,
