@@ -18,13 +18,13 @@ public class EmailServiceImpl implements IEmailService {
     private String emailSender;
 
     @Override
-    public void send_message(String mail) throws Exception {
+    public void send_message(String mail, String author, String event) throws Exception {
         MimeMessage msg = javaMailSender.createMimeMessage();
         MimeMessageHelper msgHelper = new MimeMessageHelper(msg, true); //multipart are attachments
         msgHelper.setFrom(emailSender);
         msgHelper.setTo(mail);
-        msgHelper.setText("MOFA DICE HOLA");
-        msgHelper.setSubject("Cabeza de Pija");
+        msgHelper.setText("Se ha actualizado el evento "+event+ ". Para mas informacion, visita nuestra pagina.");
+        msgHelper.setSubject("VicariaSW Notificaciones: "+author);
         javaMailSender.send(msg);
     }
 }
