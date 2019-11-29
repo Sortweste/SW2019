@@ -1,6 +1,7 @@
 package com.sort.capas.swvicaria.controller;
 
 import com.sort.capas.swvicaria.service.IChurchService;
+import com.sort.capas.swvicaria.service.IEventService;
 import com.sort.capas.swvicaria.service.IGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +22,7 @@ public class AdminController {
     IGroupService iGroupService;
 
     @GetMapping("/Event")
-    public String eventDashBoard(){
+    public String eventDashBoard(Model model){
         return "adminDashboard";
     }
 
