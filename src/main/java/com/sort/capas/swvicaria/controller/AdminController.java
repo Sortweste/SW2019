@@ -57,10 +57,10 @@ public class AdminController {
     }
 
     // Muestra la lista de miembros en un grupo.
-    @PostMapping("/Group/Members")
+    @PostMapping("/Members")
     public String manageMembersByGroup(@RequestParam("id") Long id, Model model){
         model.addAttribute("members", iGroupService.findGroup(id).getUsers());
-        return "adminGroup";
+        return "adminMembers";
     }
 
 }
