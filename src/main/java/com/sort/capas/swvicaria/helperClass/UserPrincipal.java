@@ -16,7 +16,7 @@ public class UserPrincipal implements UserDetails {
     public UserPrincipal(User user){
         this.user = user;
     }
-
+    //obtiene los roles de la base
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();

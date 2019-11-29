@@ -4,6 +4,7 @@ import com.sort.capas.swvicaria.domain.User;
 
 import java.util.List;
 
+//Servicio de usuario
 public interface IUserService {
     List<User> findAll();
     User findUserByName(String name);

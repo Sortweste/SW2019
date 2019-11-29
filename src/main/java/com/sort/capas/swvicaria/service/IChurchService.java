@@ -5,6 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
+//Servicio de iglesia
 public interface IChurchService {
     List<Church> findAll();
     Church findChurchById(Long id);
