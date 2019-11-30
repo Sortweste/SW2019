@@ -1,5 +1,6 @@
 package com.sort.capas.swvicaria.controller;
 
+import com.sort.capas.swvicaria.domain.Church;
 import com.sort.capas.swvicaria.domain.Event;
 import com.sort.capas.swvicaria.service.IChurchService;
 import com.sort.capas.swvicaria.service.IEventService;
@@ -8,10 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -43,6 +42,11 @@ public class AdminController {
         e = iEventService.findEventById(id);
         model.addAttribute("event", e);
         return "editEvent";
+    }
+
+    @PostMapping("/modifyEvent")
+    public String saveEve(@ModelAttribute("event") Event eve){
+        return "redirect:/";
     }
 
     // Redirige hacia la pagina de administrador de iglesias.

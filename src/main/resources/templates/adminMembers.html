@@ -1,10 +1,293 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Miembros</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Members</title>
+
+    <!-- Custom fonts for this template-->
+    <link th:href="@{/vendor/fontawesome-free/css/all.min.css}"
+          rel="stylesheet" type="text/css" />
+
+    <!-- Page level plugin CSS-->
+    <link th:href="@{/vendor/datatables/dataTables.bootstrap4.css}"
+          rel="stylesheet" />
+
+    <!-- Custom styles for this template-->
+    <link th:href="@{/vendor/sb-admin.css}" rel="stylesheet" />
+
 </head>
-<body>
-Lucina
+
+<body id="page-top">
+
+<script type="text/javascript">
+
+    function mensaje() {
+
+        Swal.fire({
+            position: 'center',
+            type: 'warning',
+            title: 'Este formulario posee campos requeridos',
+            showConfirmButton: false,
+            timer: 2500
+        })
+    }
+
+
+    function borrar() {
+        var persona = document.getElementById('author').value="";
+        var persona2 = document.getElementById('sub_author').value="";
+        var persona3 = document.getElementById('persona').value="";
+        var cost = document.getElementById('cost').value="";
+        var title = document.getElementById('title').value="";
+        var info = document.getElementById('info').value="";
+        var start = document.getElementById('start').value="";
+        var hora = document.getElementById('hora').value="";
+        var end = document.getElementById('time').value ="";
+    }
+
+
+    function formulario(){
+        var persona = document.getElementById('author').value;
+        var persona2 = document.getElementById('sub_author').value;
+        var persona3 = document.getElementById('persona').value;
+        var cost = document.getElementById('cost').value;
+        var title = document.getElementById('title').value;
+        var info = document.getElementById('info').value;
+        var start = document.getElementById('start').value;
+        var hora = document.getElementById('hora').value;
+        var end = document.getElementById('time').value +" "+hora;
+
+        if (persona == "" || persona3 == "" || title == "" || info == "" || start == "" || hora == "" || end == ""){
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            })
+
+            Toast.fire({
+                type: 'warning',
+                title: 'Complete campos requeridos'
+            })
+        }
+        else{
+            swal({
+                    title: "Estas seguro de agregar esta informacion?",
+                    text: "La informacion que pretendes enviar es\n\n"
+                        +"\nAutor: " +persona
+                        +"\nCo-Autor: " +persona2
+                        +"\nEncargado: " +persona3
+                        +"\nCosto: " +cost
+                        +"\nTitulo: " +title
+                        +"\nInformacion: " +info
+                        +"\nFecha inicio: " +start
+                        +"\nhora: "+end,
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonClass: "btn-danger",
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "aceptar!",
+                    cancelButtonText: "cancel!",
+                    closeOnConfirm: true,
+                    closeOnCancel: true
+                },
+                function(isConfirm) {
+                    if (isConfirm) {
+
+
+                        $.ajax({
+                            url: 'https://sw-vicaria.herokuapp.com/Event/saveEvent?author='+persona+'&sub_author='+persona2+'&persona='+persona3+'&title='+title+'&info='+info+'&date='+start+'&time='+end+'&cost='+cost,
+                            success: function(data){
+                                const Toast = Swal.mixin({
+                                    toast: true,
+                                    position: 'top-end',
+                                    showConfirmButton: false,
+                                    timer: 3000
+                                })
+
+                                Toast.fire({
+                                    type: 'success',
+                                    title: 'Signed in successfully'
+                                })
+                                var persona = document.getElementById('author').value ="";
+                                var persona2 = document.getElementById('sub_author').value="";
+                                var persona3 = document.getElementById('persona').value="";
+                                var cost = document.getElementById('cost').value=0;
+                                var title = document.getElementById('title').value="";
+                                var info = document.getElementById('info').value="";
+                                var start = document.getElementById('start').value="";
+                                var end = document.getElementById('time').value="";
+                                var hora = document.getElementById('hora').value="";
+                            },
+                            error: function(e){
+                                const Toast = Swal.mixin({
+                                    toast: true,
+                                    position: 'top-end',
+                                    showConfirmButton: false,
+                                    timer: 3000
+                                })
+
+                                Toast.fire({
+                                    type: 'error',
+                                    title: 'Signed in successfully'
+                                })
+                            }
+                        });
+
+                    }
+                });
+        }
+
+
+
+    }
+
+</script>
+
+
+<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+    <a class="navbar-brand mr-1" href="adminDashboard.html">Contenido</a>
+
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+        <i class="fas fa-bars"></i>
+    </button>
+
+</nav>
+
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="sidebar navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/Admin/Group/}">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Volver</span></a>
+        </li>
+
+    </ul>
+
+    <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+
+
+            <!-- DataTables Example -->
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fas fa-table"></i>
+                    Data Table Example</div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Last Name</th>
+                                <th>Age</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="member: ${members}">
+                                <th><span th:text="${member.name}"></span>
+                                </th>
+                                <th><span th:text="${member.lastName}"></span>
+                                </th>
+                                <th><span th:text="${member.age}"></span>
+                                </th>
+                                <th><span th:text="${member.phone}"></span>
+                                </th>
+                                <th><span th:text="${member.email}"></span>
+                                </th>
+                                <th>
+                                        <input type="submit" style="margin-right:5px;" id="botonenviar" class="btn btn-primary shadow my-3" value="Editar">
+                                </th>
+                                <th>
+                                        <input type="submit" style="margin-right:5px;" id="botonenviar" class="btn btn-danger shadow my-3" value="Eliminar">
+                                </th>
+
+
+                            </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+            </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+        <!-- Sticky Footer -->
+        <footer class="sticky-footer">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright © VicariaSW 2019</span>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="login.html">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript-->
+<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js}"></script>
+
+<!-- Page level plugin JavaScript-->
+<script th:src="@{/vendor/chart.js/Chart.min.js}"></script>
+<script th:src="@{/vendor/datatables/jquery.dataTables.js}"></script>
+<script th:src="@{/vendor/datatables/dataTables.bootstrap4.js}"></script>
+
+<!-- Custom scripts for all pages-->
+<script th:src="@{/vendor/sb-admin.min.js}"></script>
+
+<!-- Demo scripts for this page-->
+<script th:src="@{/vendor/demo/datatables-demo.js}"></script>
+<script th:src="@{/vendor/demo/chart-area-demo.js}"></script>
+
+
 </body>
+
 </html>

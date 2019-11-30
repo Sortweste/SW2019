@@ -33,7 +33,7 @@
 
         <!-- Formulario agregar Evento-->
         <div>
-            <form id="editEvent" th:action="@{/Admin/saveModifyEvent}"
+            <form id="editEvent" th:action="@{/Admin/modifyEvent}"
                   th:object="${event}" method="post" enctype="multipart/form-data">
 
                 <input th:field="*{id}" id="id" th:value="${event.id}" class="form-control" type="hidden" />
